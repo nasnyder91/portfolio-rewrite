@@ -1,3 +1,5 @@
+import { animation } from './animations';
+
 class UI {
   constructor(){
     // UI Elements
@@ -16,12 +18,13 @@ class UI {
   // Change state of jumbotron
   changeJumbotronState(state, callback){
     if(state === 'code'){
-      this.fadeOutElement(this.jumboText, 1000, () => {
+      animation.fadeOutElement(this.jumboText, 1000, () => {
         this.jumboText.className = '';
         callback();
       });
-    } else if(state === 'html'){
-      this.fadeOutElement(this.jumboText, 2000, () => {
+    }
+    if(state === 'html'){
+      animation.fadeOutElement(this.jumboText, 2000, () => {
         this.jumboText.innerHTML = `
           <div class='text-center'>
             <h1>Nick Snyder <span class="orange">|</span> <span class="blue">Developer</span></h1>
@@ -30,7 +33,7 @@ class UI {
           </div>
           <button class="replayBtn btn btn-outline-secondary btn-sm float-right">Replay</button>
         `;
-        this.fadeInElement(this.jumboText, 2000);
+        animation.fadeInElement(this.jumboText, 2000);
       });
     }
   }
@@ -40,7 +43,8 @@ class UI {
     if(state === 'projects'){
       this.toggleProjects(data);
       this.mainDisplayState = 'projects';
-    } else if(state === 'contact'){
+    }
+    if(state === 'contact'){
 
     }
   }
@@ -60,36 +64,10 @@ class UI {
         `;
         this.projectsGrid.appendChild(card);
       });
-      this.fadeInElement(this.projectsGrid, 1000);
+      animation.fadeInElement(this.projectsGrid, 1000);
     } else{
       // HIDE PROJECTS WITH ANIMATION
     }
-  }
-
-  // Fade out element
-  fadeOutElement(element, duration, callback){
-    checkClass: if(element.classList.contains('fadein')){
-      element.classList.replace('fadein', 'fadeout');
-    } else if(element.classList.contains('fadeout')){
-      break checkClass;
-    } else{
-      element.className += ' fadeout';
-    }
-    element.style.setProperty('--duration', duration + 'ms');
-    setTimeout(callback, duration);
-  }
-
-  // Fade in element
-  fadeInElement(element, duration, callback){
-    checkClass: if(element.classList.contains('fadeout')){
-      element.classList.replace('fadeout', 'fadein');
-    } else if(element.classList.contains('fadein')){
-      break checkClass;
-    } else{
-      element.className += ' fadein';
-    }
-    element.style.setProperty('--duration', duration + 'ms');
-    setTimeout(callback, duration);
   }
 }
 
