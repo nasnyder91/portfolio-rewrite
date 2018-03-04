@@ -8,13 +8,13 @@
   <meta name='description' content='Portfolio of web and iOS development work by Nick Snyder.  Coding and design of websites and apps.'>
   <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
   <title>Nick Snyder Developer Portfolio</title>
 </head>
 <body class="bg-light">
   <div class="jumbotron bg-primary">
     <div class="container">
-      <div id="codeText"></div>
-      <div id="finalText"></div>
+      <div id="jumboText"></div>
     </div>
   </div>
 
@@ -27,7 +27,7 @@
           </a>
         </div>
         <div class="col-xs-2 col-sm-4 col-md-4 text-center" id="resumeContainer">
-          <a class="btn" role="button" tabindex="0" data-toggle="modal" data-target="#resumeModal">
+          <a class="btn" id="resumeBtn" role="button" tabindex="0" data-toggle="modal" data-target="#resumeModal">
             <h2>Resume</h2>
             <i class="fa fa-download" aria-hidden="true"></i>
           </a>
@@ -41,7 +41,29 @@
     </div>
   </div>
 
-  <div class="container" id="bottomInfo">
+  <div class="container" id="mainDisplay">
+    <div class="row fadeout" id="projectsGrid"></div>
+    <div class="fadeout" id="contactForm">
+      <h3 class="orange" id="formThankYou" style="display:none;">Your message has been sent.  Thank you.</h3>
+      <form class='form-horizontal col-sm-12 container' id="contactForm">
+        <div class='form-group'>
+          <label>Name</label>
+          <input class='form-control' id="name" placeholder='Your name...' type='text' name='name' required title="First Name"></div>
+        <div class='form-group'>
+          <label>E-Mail</label>
+          <input class='form-control' id="email" placeholder='Your email...' type='email' required>
+        </div>
+        <div class='form-group'>
+          <label>Message</label>
+          <textarea id='contactMessage' class='form-control' placeholder='Your message...' name='body' required></textarea>
+        </div>
+        <div class='form-group'>
+          <button type='submit' class='btn btn-success pull-right'>Send</button>
+        </div>
+        <input type='hidden' name='_next' value='' />
+      </form>
+    </div>
+    </div>
   </div>
 
   <footer class="fixed-bottom bg-primary">

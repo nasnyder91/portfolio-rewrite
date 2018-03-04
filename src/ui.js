@@ -1,13 +1,29 @@
 class UI {
   constructor(){
     // UI Elements
-    this.codeText = document.querySelector('#codeText');
+    this.jumboText = document.querySelector('#jumboText');
+    this.projectsGrid = document.querySelector('#projectsGrid');
+    this.contactForm = document.querySelector('#contactForm');
     // Projects/form state
-    this.forState = 'projects';
+    this.mainDisplayState = 'projects';
   }
 
+  // Print text to jumbotron
   printText(text){
-    this.codeText.innerHTML = text;
+    this.jumboText.innerHTML = text;
+  }
+
+  // Change state of jumbotron
+  changeJumbotronState(state){
+    
+  }
+
+
+
+  fadeInElement(element, duration, callback){
+    if(element.className.contains('fadeout')){
+      element.className.replace('fadein');
+    }
   }
 }
 
