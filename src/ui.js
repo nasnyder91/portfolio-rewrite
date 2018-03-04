@@ -5,7 +5,7 @@ class UI {
     this.projectsGrid = document.querySelector('#projectsGrid');
     this.contactForm = document.querySelector('#contactForm');
     // Projects/form state
-    this.mainDisplayState = 'projects';
+    this.mainDisplayState = '';
   }
 
   // Print text to jumbotron
@@ -16,7 +16,7 @@ class UI {
   // Change state of jumbotron
   changeJumbotronState(state, callback){
     if(state === 'code'){
-      this.fadeOutElement(this.jumboText, 2000, () => {
+      this.fadeOutElement(this.jumboText, 1000, () => {
         this.jumboText.className = '';
         callback();
       });
@@ -35,11 +35,43 @@ class UI {
     }
   }
 
+  // Change state of main display section
+  changeMainDisplayState(state, data){
+    if(state === 'projects'){
+      this.toggleProjects(data);
+      this.mainDisplayState = 'projects';
+    } else if(state === 'contact'){
+
+    }
+  }
+
+  // Display projects
+  toggleProjects(projects){
+    if(this.mainDisplayState !== 'projects'){
+      projects.forEach((project) => {
+        const webURL = project.has_pages ? `<a href="https://nasnyder91.github.io/${project.name}">Webpage</a>` : '';
+        // Create project card
+        const card = document.createElement('div');
+        card.className = 'card col-md-6';
+        card.innerHTML = `
+          ${project.name}
+          ${webURL}
+          <a href="${project.html_url}">GitHub Repo</a>
+        `;
+        this.projectsGrid.appendChild(card);
+      });
+      this.fadeInElement(this.projectsGrid, 1000);
+    } else{
+      // HIDE PROJECTS WITH ANIMATION
+    }
+  }
 
   // Fade out element
   fadeOutElement(element, duration, callback){
-    if(element.classList.contains('fadein')){
+    checkClass: if(element.classList.contains('fadein')){
       element.classList.replace('fadein', 'fadeout');
+    } else if(element.classList.contains('fadeout')){
+      break checkClass;
     } else{
       element.className += ' fadeout';
     }
@@ -49,8 +81,10 @@ class UI {
 
   // Fade in element
   fadeInElement(element, duration, callback){
-    if(element.classList.contains('fadeout')){
+    checkClass: if(element.classList.contains('fadeout')){
       element.classList.replace('fadeout', 'fadein');
+    } else if(element.classList.contains('fadein')){
+      break checkClass;
     } else{
       element.className += ' fadein';
     }
