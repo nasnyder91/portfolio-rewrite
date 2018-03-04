@@ -43,6 +43,7 @@ class UI {
     } else{
       element.className += ' fadeout';
     }
+    element.style.setProperty('--duration', duration + 'ms');
     setTimeout(callback, duration);
   }
 
@@ -53,6 +54,7 @@ class UI {
     } else{
       element.className += ' fadein';
     }
+    element.style.setProperty('--duration', duration + 'ms');
     setTimeout(callback, duration);
   }
 }
