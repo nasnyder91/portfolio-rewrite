@@ -14,16 +14,46 @@ class UI {
   }
 
   // Change state of jumbotron
-  changeJumbotronState(state){
-    
+  changeJumbotronState(state, callback){
+    if(state === 'code'){
+      this.fadeOutElement(this.jumboText, 2000, () => {
+        this.jumboText.className = '';
+        callback();
+      });
+    } else if(state === 'html'){
+      this.fadeOutElement(this.jumboText, 2000, () => {
+        this.jumboText.innerHTML = `
+          <div class='text-center'>
+            <h1>Nick Snyder <span class="orange">|</span> <span class="blue">Developer</span></h1>
+            <br><br>
+            <h2>Welcome to my portfolio.</h2>
+          </div>
+          <button class="replayBtn btn btn-outline-secondary btn-sm float-right">Replay</button>
+        `;
+        this.fadeInElement(this.jumboText, 2000);
+      });
+    }
   }
 
 
-
-  fadeInElement(element, duration, callback){
-    if(element.className.contains('fadeout')){
-      element.className.replace('fadein');
+  // Fade out element
+  fadeOutElement(element, duration, callback){
+    if(element.classList.contains('fadein')){
+      element.classList.replace('fadein', 'fadeout');
+    } else{
+      element.className += ' fadeout';
     }
+    setTimeout(callback, duration);
+  }
+
+  // Fade in element
+  fadeInElement(element, duration, callback){
+    if(element.classList.contains('fadeout')){
+      element.classList.replace('fadeout', 'fadein');
+    } else{
+      element.className += ' fadein';
+    }
+    setTimeout(callback, duration);
   }
 }
 
