@@ -4,8 +4,7 @@ class UI {
   constructor(){
     // UI Elements
     this.jumboText = document.querySelector('#jumboText');
-    this.projectsGrid = document.querySelector('#projectsGrid');
-    this.contactForm = document.querySelector('#contactForm');
+    this.mainDisplay = document.querySelector('#mainDisplay');
     // Projects/form state
     this.mainDisplayState = '';
   }
@@ -40,18 +39,41 @@ class UI {
 
   // Change state of main display section
   changeMainDisplayState(state, data){
-    if(state === 'projects'){
-      this.toggleProjects(data);
-      this.mainDisplayState = 'projects';
-    }
-    if(state === 'contact'){
+    if(this.mainDisplayState === ''){
+      if(state === 'projects'){
+        this.toggleProjects(data);
+      }
+      if(state === 'contact'){
+        this.toggleContactForm();
+      }
+    } else {
+      animation.fadeOutElement(this.mainDisplay, 500, () => {
+        // Clear main display after fadeout
+        this.mainDisplay.innerHTML = '';
 
+        // Display state
+        if(state === 'projects'){
+          this.toggleProjects(data);
+        }
+        if(state === 'contact'){
+          this.toggleContactForm();
+        }
+      })
     }
+
   }
 
   // Display projects
   toggleProjects(projects){
     if(this.mainDisplayState !== 'projects'){
+      // Set main display state
+      this.mainDisplayState = 'projects';
+      // Create projects grid
+      const projectsGrid = document.createElement('div');
+      projectsGrid.className = 'row';
+      projectsGrid.id = 'projectsGrid';
+
+      // Loop through projects and make project cards
       projects.forEach((project) => {
         const webURL = project.has_pages ? `<a href="https://nasnyder91.github.io/${project.name}">Webpage</a>` : '';
         // Create project card
@@ -62,11 +84,64 @@ class UI {
           ${webURL}
           <a href="${project.html_url}">GitHub Repo</a>
         `;
-        this.projectsGrid.appendChild(card);
+        // Append project card to projects grid
+        projectsGrid.appendChild(card);
       });
-      animation.fadeInElement(this.projectsGrid, 1000);
+
+      // Append projects grid to main display section
+      this.mainDisplay.appendChild(projectsGrid);
+
+      // Fade in the main display
+      animation.fadeInElement(this.mainDisplay, 500);
     } else{
-      // HIDE PROJECTS WITH ANIMATION
+      // Fade out main display and remove projects grid
+      animation.fadeOutElement(this.mainDisplay, 500, () => {
+        this.mainDisplay.innerHTML = '';
+        this.mainDisplayState = '';
+      });
+    }
+  }
+
+  // Toggle contact form
+  toggleContactForm(){
+    if(this.mainDisplayState !== 'contact'){
+      // Set main display state
+      this.mainDisplayState = 'contact';
+      // Create contact form
+      const contact = document.createElement('div');
+      contact.id = 'contactForm';
+      contact.innerHTML = `
+        <h3 class="orange" id="formThankYou" style="display:none">Your message has been sent.  Thank you.</h3>
+        <form class='form-horizontal col-sm-12 container' id="contactForm">
+          <div class='form-group'>
+            <label>Name</label>
+            <input class='form-control' id="name" placeholder='Your name...' type='text' name='name' required title="First Name"></div>
+          <div class='form-group'>
+            <label>E-Mail</label>
+            <input class='form-control' id="email" placeholder='Your email...' type='email' required>
+          </div>
+          <div class='form-group'>
+            <label>Message</label>
+            <textarea id='contactMessage' class='form-control' placeholder='Your message...' name='body' required></textarea>
+          </div>
+          <div class='form-group'>
+            <button type='submit' class='btn btn-success pull-right'>Send</button>
+          </div>
+          <input type='hidden' name='_next' value='' />
+        </form>
+      `;
+
+      // Append contact form to main display
+      this.mainDisplay.appendChild(contact);
+
+      // Fade in the main display
+      animation.fadeInElement(this.mainDisplay, 500);
+    } else{
+      // Fade out main display and remove contact form
+      animation.fadeOutElement(this.mainDisplay, 500, () => {
+        this.mainDisplay.innerHTML = '';
+        this.mainDisplayState = '';
+      });
     }
   }
 }
