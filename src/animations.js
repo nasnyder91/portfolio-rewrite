@@ -26,46 +26,67 @@ class Animation {
   }
 
   // Slide in right
-  slideInRight(element, duration, bounce, callback){
+  slideInRight(element, duration, callback){
     element.classList.add('slideInRight');
 
     element.style.setProperty('--duration', duration + 'ms');
     setTimeout(() => {
       element.classList.remove('slideInRight');
-      callback;
+      if(callback){
+        callback();
+      }
     }, duration);
   }
 
   // Slide out right
-  slideOutRight(element, duration, bounce, callback){
+  slideOutRight(element, duration, callback){
     element.classList.add('slideOutRight');
 
     element.style.setProperty('--duration', duration + 'ms');
     setTimeout(() => {
       element.classList.remove('slideOutRight');
-      callback();
+      if(callback){
+        callback();
+      }
     }, duration);
   }
 
   // Slide in left
-  slideInLeft(element, duration, bounce, callback){
+  slideInLeft(element, duration, callback){
     element.classList.add('slideInLeft');
 
     element.style.setProperty('--duration', duration + 'ms');
     setTimeout(() => {
       element.classList.remove('slideInLeft');
-      callback;
+      if(callback){
+        callback();
+      }
     }, duration);
   }
 
   // Slide out left
-  slideOutLeft(element, duration, bounce, callback){
+  slideOutLeft(element, duration, callback){
     element.classList.add('slideOutLeft');
 
     element.style.setProperty('--duration', duration + 'ms');
     setTimeout(() => {
       element.classList.remove('slideOutLeft');
-      callback();
+      if(callback){
+        callback();
+      }
+    }, duration);
+  }
+
+  // Slide in down
+  slideInDown(element, duration, callback){
+    element.classList.add('slideInDown');
+
+    element.style.setProperty('--duration', duration + 'ms');
+    setTimeout(() => {
+      element.classList.remove('slideInDown');
+      if(callback){
+        callback();
+      }
     }, duration);
   }
 }

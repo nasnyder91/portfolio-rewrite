@@ -27,10 +27,8 @@ function replayJumbo(e){
 // Projects button pressed
 function displayProjects(){
   if(sessionStorage.getItem('repos')){
-    console.log('from storage');
     ui.changeMainDisplayState('projects', JSON.parse(sessionStorage.getItem('repos')));
   } else{
-    console.log('from github');
     github.getRepos()
       .then(data => {
         sessionStorage.setItem('repos', JSON.stringify(data.repos));

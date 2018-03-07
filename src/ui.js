@@ -32,7 +32,8 @@ class UI {
           </div>
           <button class="replayBtn btn btn-outline-secondary btn-sm float-right">Replay</button>
         `;
-        animation.fadeInElement(this.jumboText, 2000);
+        this.jumboText.classList.remove('fadeout');
+        animation.slideInDown(this.jumboText, 2000);
       });
     }
   }
@@ -49,7 +50,7 @@ class UI {
         }
         break;
       case 'projects':
-        animation.slideOutLeft(this.mainDisplay, 500, 0, () => {
+        animation.slideOutLeft(this.mainDisplay, 500, () => {
           // Clear main display after fadeout
           this.mainDisplay.innerHTML = '';
 
@@ -63,7 +64,7 @@ class UI {
         });
         break;
       case 'contact':
-        animation.slideOutRight(this.mainDisplay, 500, 0, () => {
+        animation.slideOutRight(this.mainDisplay, 500, () => {
           // Clear main display after fadeout
           this.mainDisplay.innerHTML = '';
 
@@ -114,7 +115,7 @@ class UI {
       animation.slideInRight(this.mainDisplay, 500);
     } else{
       // Fade out main display and remove projects grid
-      animation.slideOutLeft(this.mainDisplay, 500, 0, () => {
+      animation.slideOutLeft(this.mainDisplay, 500, () => {
         this.mainDisplay.innerHTML = '';
         this.mainDisplayState = '';
       });
@@ -157,7 +158,7 @@ class UI {
       animation.slideInLeft(this.mainDisplay, 500);
     } else{
       // Fade out main display and remove contact form
-      animation.slideOutRight(this.mainDisplay, 500, 0, () => {
+      animation.slideOutRight(this.mainDisplay, 500, () => {
         this.mainDisplay.innerHTML = '';
         this.mainDisplayState = '';
       });
