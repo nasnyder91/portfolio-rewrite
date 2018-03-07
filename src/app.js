@@ -26,11 +26,19 @@ function replayJumbo(e){
 
 // Projects button pressed
 function displayProjects(){
-  github.getRepos()
-    .then(data => {
-      ui.changeMainDisplayState('projects', data.repos);
-    })
-    .catch(err => console.log(err));
+  if(sessionStorage.getItem('repos')){
+    console.log('from storage');
+    ui.changeMainDisplayState('projects', JSON.parse(sessionStorage.getItem('repos')));
+  } else{
+    console.log('from github');
+    github.getRepos()
+      .then(data => {
+        sessionStorage.setItem('repos', JSON.stringify(data.repos));
+        ui.changeMainDisplayState('projects', data.repos);
+      })
+      .catch(err => console.log(err));
+  }
+
 }
 
 // Contact Form button pressed

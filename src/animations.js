@@ -6,7 +6,7 @@ class Animation {
     } else if(element.classList.contains('fadeout')){
       break checkClass;
     } else{
-      element.className += ' fadeout';
+      element.classList.add('fadeout');
     }
     element.style.setProperty('--duration', duration + 'ms');
     setTimeout(callback, duration);
@@ -19,10 +19,54 @@ class Animation {
     } else if(element.classList.contains('fadein')){
       break checkClass;
     } else{
-      element.className += ' fadein';
+      element.classList.add('fadein');
     }
     element.style.setProperty('--duration', duration + 'ms');
     setTimeout(callback, duration);
+  }
+
+  // Slide in right
+  slideInRight(element, duration, bounce, callback){
+    element.classList.add('slideInRight');
+
+    element.style.setProperty('--duration', duration + 'ms');
+    setTimeout(() => {
+      element.classList.remove('slideInRight');
+      callback;
+    }, duration);
+  }
+
+  // Slide out right
+  slideOutRight(element, duration, bounce, callback){
+    element.classList.add('slideOutRight');
+
+    element.style.setProperty('--duration', duration + 'ms');
+    setTimeout(() => {
+      element.classList.remove('slideOutRight');
+      callback();
+    }, duration);
+  }
+
+  // Slide in left
+  slideInLeft(element, duration, bounce, callback){
+    element.classList.add('slideInLeft');
+
+    element.style.setProperty('--duration', duration + 'ms');
+    setTimeout(() => {
+      element.classList.remove('slideInLeft');
+      callback;
+    }, duration);
+  }
+
+  // Slide out left
+  slideOutLeft(element, duration, bounce, callback){
+    element.classList.add('slideOutLeft');
+
+    element.style.setProperty('--duration', duration + 'ms');
+    setTimeout(() => {
+      element.classList.remove('slideOutLeft');
+      callback();
+    }, duration);
   }
 }
 

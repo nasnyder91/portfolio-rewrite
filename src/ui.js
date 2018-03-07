@@ -39,28 +39,46 @@ class UI {
 
   // Change state of main display section
   changeMainDisplayState(state, data){
-    if(this.mainDisplayState === ''){
-      if(state === 'projects'){
-        this.toggleProjects(data);
-      }
-      if(state === 'contact'){
-        this.toggleContactForm();
-      }
-    } else {
-      animation.fadeOutElement(this.mainDisplay, 500, () => {
-        // Clear main display after fadeout
-        this.mainDisplay.innerHTML = '';
-
-        // Display state
+    switch(this.mainDisplayState){
+      case '':
         if(state === 'projects'){
           this.toggleProjects(data);
         }
         if(state === 'contact'){
           this.toggleContactForm();
         }
-      })
-    }
+        break;
+      case 'projects':
+        animation.slideOutLeft(this.mainDisplay, 500, 0, () => {
+          // Clear main display after fadeout
+          this.mainDisplay.innerHTML = '';
 
+          // Display state
+          if(state === 'projects'){
+            this.toggleProjects(data);
+          }
+          if(state === 'contact'){
+            this.toggleContactForm();
+          }
+        });
+        break;
+      case 'contact':
+        animation.slideOutRight(this.mainDisplay, 500, 0, () => {
+          // Clear main display after fadeout
+          this.mainDisplay.innerHTML = '';
+
+          // Display state
+          if(state === 'projects'){
+            this.toggleProjects(data);
+          }
+          if(state === 'contact'){
+            this.toggleContactForm();
+          }
+        });
+        break;
+      default:
+        break;
+    }
   }
 
   // Display projects
@@ -92,10 +110,11 @@ class UI {
       this.mainDisplay.appendChild(projectsGrid);
 
       // Fade in the main display
-      animation.fadeInElement(this.mainDisplay, 500);
+      // animation.fadeInElement(this.mainDisplay, 500);
+      animation.slideInRight(this.mainDisplay, 500);
     } else{
       // Fade out main display and remove projects grid
-      animation.fadeOutElement(this.mainDisplay, 500, () => {
+      animation.slideOutLeft(this.mainDisplay, 500, 0, () => {
         this.mainDisplay.innerHTML = '';
         this.mainDisplayState = '';
       });
@@ -135,10 +154,10 @@ class UI {
       this.mainDisplay.appendChild(contact);
 
       // Fade in the main display
-      animation.fadeInElement(this.mainDisplay, 500);
+      animation.slideInLeft(this.mainDisplay, 500);
     } else{
       // Fade out main display and remove contact form
-      animation.fadeOutElement(this.mainDisplay, 500, () => {
+      animation.slideOutRight(this.mainDisplay, 500, 0, () => {
         this.mainDisplay.innerHTML = '';
         this.mainDisplayState = '';
       });
