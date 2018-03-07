@@ -26,9 +26,9 @@ class UI {
       animation.fadeOutElement(this.jumboText, 2000, () => {
         this.jumboText.innerHTML = `
           <div class='text-center'>
-            <h1>Nick Snyder <span class="orange">|</span> <span class="blue">Developer</span></h1>
+            <h1 class="display-3 text-secondary">Nick Snyder <span class="orange">|</span> <span class="blue">Developer</span></h1>
             <br><br>
-            <h2>Welcome to my portfolio.</h2>
+            <h2 class="text-secondary">Welcome to my portfolio.</h2>
           </div>
           <button class="replayBtn btn btn-outline-secondary btn-sm float-right">Replay</button>
         `;
