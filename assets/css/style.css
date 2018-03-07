@@ -1,3 +1,5 @@
+@import "animations.css";
+
 body,html{
     width: 100%;
     height: 100%;
@@ -8,7 +10,8 @@ body,html{
 }
 
 .jumbotron {
-  height: 50%;
+  height: 40vh;
+  min-height: 300px;
 }
 
 .orange{
@@ -19,143 +22,15 @@ body,html{
   color: #0a69c9;
 }
 
-
-.fadein {
-  --duration: 2000ms;
-  opacity: 1;
-  transition: opacity var(--duration) ease-in-out;
-  -moz-transition: opacity var(--duration) ease-in-out;
-  -webkit-transition: opacity var(--duration) ease-in-out;
-}
-.fadeout {
-  --duration: 2000ms;
-  opacity: 0;
-  transition: opacity var(--duration) ease-in-out;
-  -moz-transition: opacity var(--duration) ease-in-out;
-  -webkit-transition: opacity var(--duration) ease-in-out;
+#buttons i{
+  font-size:60px;
 }
 
-@keyframes slideInRight {
-  from {
-    -ms-transform: translate(-100%, 0);
-    -webkit-transform: translate(-100%, 0);
-    transform: translate(-100%, 0);
-    opacity: 0;
-  }
-  to {
-    -ms-transform: translate(0, 0);
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
-    opacity: 1;
-  }
+#mainDisplay {
+  margin-bottom: 300px;
 }
 
-.slideInRight {
-  --duration: 1000ms;
-  -webkit-animation-name: slideInRight;
-  animation-name: slideInRight;
-  animation-duration: var(--duration);
-  animation-timing-function: ease-out;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-
-@keyframes slideOutRight {
-  from {
-    -ms-transform: translate(0, 0);
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
-    opacity: 1;
-  }
-  to {
-    -ms-transform: translate(100%, 0);
-    -webkit-transform: translate(100%, 0);
-    transform: translate(100%, 0);
-    opacity: 0;
-  }
-}
-
-.slideOutRight {
-  --duration: 1000ms;
-  -webkit-animation-name: slideOutRight;
-  animation-name: slideOutRight;
-  animation-duration: var(--duration);
-  animation-timing-function: ease-out;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-
-@keyframes slideInLeft {
-  from {
-    -ms-transform: translate(100%, 0);
-    -webkit-transform: translate(100%, 0);
-    transform: translate(100%, 0);
-    opacity: 0;
-  }
-  to {
-    -ms-transform: translate(0, 0);
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
-    opacity: 1;
-  }
-}
-
-.slideInLeft {
-  --duration: 1000ms;
-  -webkit-animation-name: slideInLeft;
-  animation-name: slideInLeft;
-  animation-duration: var(--duration);
-  animation-timing-function: ease-out;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-
-@keyframes slideOutLeft {
-  from {
-    -ms-transform: translate(0, 0);
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
-    opacity: 1;
-  }
-  to {
-    -ms-transform: translate(-100%, 0);
-    -webkit-transform: translate(-100%, 0);
-    transform: translate(-100%, 0);
-    opacity: 0;
-  }
-}
-
-.slideOutLeft {
-  --duration: 1000ms;
-  -webkit-animation-name: slideOutLeft;
-  animation-name: slideOutLeft;
-  animation-duration: var(--duration);
-  animation-timing-function: ease-out;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-
-@keyframes slideInDown {
-  from {
-    -ms-transform: translate(0, -100%);
-    -webkit-transform: translate(0, -100%);
-    transform: translate(0, -100%);
-    opacity: 0;
-  }
-  to {
-    -ms-transform: translate(0, 0);
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
-    opacity: 1;
-  }
-}
-
-.slideInDown {
-  --duration: 1000ms;
-  -webkit-animation-name: slideInDown;
-  animation-name: slideInDown;
-  animation-duration: var(--duration);
-  animation-timing-function: ease-out;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
+.modal-xl {
+  width: 75% !important;
+  max-width:1200px;
 }

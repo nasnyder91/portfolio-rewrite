@@ -65,7 +65,7 @@ class UI {
         break;
       case 'contact':
         animation.slideOutRight(this.mainDisplay, 500, () => {
-          // Clear main display after fadeout
+          // Clear main display after slideout
           this.mainDisplay.innerHTML = '';
 
           // Display state
@@ -94,14 +94,15 @@ class UI {
 
       // Loop through projects and make project cards
       projects.forEach((project) => {
-        const webURL = project.has_pages ? `<a href="https://nasnyder91.github.io/${project.name}">Webpage</a>` : '';
+        console.log(project);
         // Create project card
         const card = document.createElement('div');
         card.className = 'card col-md-6';
         card.innerHTML = `
-          ${project.name}
-          ${webURL}
-          <a href="${project.html_url}">GitHub Repo</a>
+          <h4>${project.name}</h4>
+          ${project.description !== null ? `<p>${project.description}</p>` : ''}
+          ${project.has_pages ? `<a href="https://nasnyder91.github.io/${project.name}">Webpage</a>` : ''}
+          <a href="${project.html_url}">GitHub Repository</a>
         `;
         // Append project card to projects grid
         projectsGrid.appendChild(card);
@@ -110,11 +111,10 @@ class UI {
       // Append projects grid to main display section
       this.mainDisplay.appendChild(projectsGrid);
 
-      // Fade in the main display
-      // animation.fadeInElement(this.mainDisplay, 500);
+      // Slide in the main display
       animation.slideInRight(this.mainDisplay, 500);
     } else{
-      // Fade out main display and remove projects grid
+      // Slide out main display and remove projects grid
       animation.slideOutLeft(this.mainDisplay, 500, () => {
         this.mainDisplay.innerHTML = '';
         this.mainDisplayState = '';
@@ -154,10 +154,10 @@ class UI {
       // Append contact form to main display
       this.mainDisplay.appendChild(contact);
 
-      // Fade in the main display
+      // Slide in the main display
       animation.slideInLeft(this.mainDisplay, 500);
     } else{
-      // Fade out main display and remove contact form
+      // Slide out main display and remove contact form
       animation.slideOutRight(this.mainDisplay, 500, () => {
         this.mainDisplay.innerHTML = '';
         this.mainDisplayState = '';
