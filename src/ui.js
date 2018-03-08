@@ -97,12 +97,18 @@ class UI {
         console.log(project);
         // Create project card
         const card = document.createElement('div');
-        card.className = 'card col-md-6';
+        card.className = 'card hoverHL col-md-12 pt-4 pb-4 my-2';
         card.innerHTML = `
-          <h4>${project.name}</h4>
-          ${project.description !== null ? `<p>${project.description}</p>` : ''}
-          ${project.has_pages ? `<a href="https://nasnyder91.github.io/${project.name}">Webpage</a>` : ''}
-          <a href="${project.html_url}">GitHub Repository</a>
+          <div class="row">
+            <div class="col-md-8 col-sm-12">
+              <h4>${project.name}</h4>
+              ${project.description !== null ? `<p>${project.description}</p>` : ''}
+            </div>
+            <div class="col-md-4 d-inline-flex align-items-start justify-content-around">
+              <a href="${project.html_url}" target="_blank" class="btn btn-dark">GitHub Repository</a>
+              ${project.has_pages ? `<a href="https://nasnyder91.github.io/${project.name}" target="_blank" class="btn btn-primary">Webpage</a>` : '<a href="#" class="btn btn-primary float-right disabled">Webpage</a>'}
+            </div>
+          </div>
         `;
         // Append project card to projects grid
         projectsGrid.appendChild(card);

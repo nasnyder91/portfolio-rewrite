@@ -50,7 +50,7 @@ class CodeWriter {
         return;
       } else{
         iteration++;
-        return setTimeout(_loopThroughText, (Math.floor(Math.random()*(61) + 20)));
+        return setTimeout(_loopThroughText, (Math.floor(Math.random()*(80) + 5)));
       }
     }
     _loopThroughText(finalTextArr[iteration]);
