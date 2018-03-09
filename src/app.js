@@ -12,8 +12,8 @@ document.querySelector('#jumboText').addEventListener('click', replayJumbo);
 document.querySelector('#projectsBtn').addEventListener('click', displayProjects);
 // Display projects event listener
 document.querySelector('#contactBtn').addEventListener('click', displayContactForm);
-// Submit form event listener
-document.querySelector('#mainDisplay').addEventListener('click', submitForm);
+// Check validity/submit of form event listener
+document.querySelector('#mainDisplay').addEventListener('click', checkFormValidityAndSubmit);
 
 // Calls html to write onto screen
 function writeCode(){
@@ -47,9 +47,17 @@ function displayContactForm(){
   ui.changeMainDisplayState('contact');
 }
 
-
-function submitForm(e){
-  e.preventDefault();
-  console.log(123);
-  formSubmit.checkValidity(e.target);
+// Check form validity on input blur
+function checkFormValidityAndSubmit(e){
+  if(e.target.classList.contains('needs-validation')){
+    e.target.addEventListener('blur', () => formSubmit.checkInputValidity(e.target));
+  }
+  if(e.target.type === 'submit'){
+    e.preventDefault();
+    if(!e.target.parentElement.checkValidity()){
+      formSubmit.showFormInvalid(e.target.parentElement);
+    } else{
+      formSubmit.submitForm(e.target.parentElement);
+    }
+  }
 }

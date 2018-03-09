@@ -140,11 +140,12 @@ class UI {
         <form class='form-horizontal col-sm-12 container' id="contactForm" novalidate>
           <div class='form-group'>
             <label>Name</label>
-            <input class='form-control needs-validation' id="name" placeholder='Enter your name' type='text' name='name' required></div>
+            <input class='form-control needs-validation' id="name" placeholder='Enter your name' type='text' name="name" required>
             <div class="invalid-feedback">Please enter your name.</div>
+          </div>
           <div class='form-group'>
             <label>E-Mail</label>
-            <input class='form-control needs-validation' id="email" placeholder='Enter your email address' type='email' required>
+            <input class='form-control needs-validation' id="email" placeholder='Enter your email address' type='email' name="email" required>
             <div class="invalid-feedback">Please enter a valid email address.</div>
           </div>
           <div class='form-group'>
