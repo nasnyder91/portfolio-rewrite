@@ -33,7 +33,7 @@ class UI {
           <button class="replayBtn btn btn-outline-secondary btn-sm float-right">Replay</button>
         `;
         this.jumboText.classList.remove('fadeout');
-        animation.slideInDown(this.jumboText, 2000);
+        animation.slideInDown(this.jumboText, 1500);
       });
     }
   }
@@ -135,24 +135,24 @@ class UI {
       this.mainDisplayState = 'contact';
       // Create contact form
       const contact = document.createElement('div');
-      contact.id = 'contactForm';
       contact.innerHTML = `
         <h3 class="orange" id="formThankYou" style="display:none">Your message has been sent.  Thank you.</h3>
-        <form class='form-horizontal col-sm-12 container' id="contactForm">
+        <form class='form-horizontal col-sm-12 container' id="contactForm" novalidate>
           <div class='form-group'>
             <label>Name</label>
-            <input class='form-control' id="name" placeholder='Your name...' type='text' name='name' required title="First Name"></div>
+            <input class='form-control needs-validation' id="name" placeholder='Enter your name' type='text' name='name' required></div>
+            <div class="invalid-feedback">Please enter your name.</div>
           <div class='form-group'>
             <label>E-Mail</label>
-            <input class='form-control' id="email" placeholder='Your email...' type='email' required>
+            <input class='form-control needs-validation' id="email" placeholder='Enter your email address' type='email' required>
+            <div class="invalid-feedback">Please enter a valid email address.</div>
           </div>
           <div class='form-group'>
             <label>Message</label>
-            <textarea id='contactMessage' class='form-control' placeholder='Your message...' name='body' required></textarea>
+            <textarea id='message' class='form-control needs-validation' placeholder='Enter your message' name='body' required></textarea>
+            <div class="invalid-feedback">Please enter a message.</div>
           </div>
-          <div class='form-group'>
-            <button type='submit' class='btn btn-success pull-right'>Send</button>
-          </div>
+          <input type='submit' value="Send" class='btn btn-success btn-block'>
           <input type='hidden' name='_next' value='' />
         </form>
       `;
