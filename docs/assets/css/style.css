@@ -1,0 +1,40 @@
+@import "animations.css";
+
+body,html{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x:hidden;
+    position: relative;
+}
+
+.jumbotron {
+  height: 40vh;
+  min-height: 300px;
+}
+
+.orange{
+  color: #ce5814;
+}
+
+.blue{
+  color: #0a69c9;
+}
+
+#buttons i{
+  font-size:60px;
+}
+
+#mainDisplay {
+  margin-bottom: 300px;
+}
+
+.modal-xl {
+  width: 75% !important;
+  max-width:1200px;
+}
+
+.hoverHL:hover{
+  background-color: rgba(255, 93, 0, 0.06);
+}
