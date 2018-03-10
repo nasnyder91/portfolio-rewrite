@@ -137,3 +137,53 @@
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
+
+@keyframes slideOutDown {
+  from {
+    -ms-transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  to {
+    -ms-transform: translate(0, 100%);
+    -webkit-transform: translate(0, 100%);
+    transform: translate(0, 100%);
+    opacity: 0;
+  }
+}
+
+.slideOutDown {
+  --duration: 1000ms;
+  -webkit-animation-name: slideOutDown;
+  animation-name: slideOutDown;
+  animation-duration: var(--duration);
+  animation-timing-function: ease-out;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@keyframes slideInUp {
+  from {
+    -ms-transform: translate(0, 100%);
+    -webkit-transform: translate(0, 100%);
+    transform: translate(0, 100%);
+    opacity: 0;
+  }
+  to {
+    -ms-transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+.slideInUp {
+  --duration: 1000ms;
+  -webkit-animation-name: slideInUp;
+  animation-name: slideInUp;
+  animation-duration: var(--duration);
+  animation-timing-function: ease-out;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}

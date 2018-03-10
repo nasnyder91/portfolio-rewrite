@@ -10,7 +10,7 @@ class FormSubmit {
   showFormInvalid(form){
     const children = form.children;
 
-    for(let i = 0; i< children.length; i++){
+    for(let i = 0; i < children.length; i++){
       const input = children[i].querySelector('.needs-validation');
 
       if(input !== null){
@@ -23,30 +23,19 @@ class FormSubmit {
     }
   }
 
-  submitForm(form){
-    const name = form.querySelector('#name').value;
-    const email = form.querySelector('#email').value;
-    const message = form.querySelector('#message').value;
+  // Clear the form inputs
+  clearForm(form){
+    form.querySelector('#name').value = '';
+    form.querySelector('#email').value = '';
+    form.querySelector('#message').value = '';
+  }
 
-    const url = 'https://formspree.io/snyderdeveloper@gmail.com';
-    const data = {
-      name:name,
-      _replyto:email,
-      email:email,
-      comments:message,
-      _subject:'Portfolio form submission',
-    };
+  // Show thank you message
+  showMessage(){
+    const message = document.querySelector('#formThankYou');
+    message.style.display = 'block';
 
-    fetch(url, {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .catch(error => console.error('Error:', error))
-    .then(res => res.json())
-    .then(response => console.log('Success:', response));
+    setTimeout(() => message.style.display = 'none', 5000);
   }
 
   makeInvalid(input){

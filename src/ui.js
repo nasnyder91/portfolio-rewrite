@@ -5,8 +5,12 @@ class UI {
     // UI Elements
     this.jumboText = document.querySelector('#jumboText');
     this.mainDisplay = document.querySelector('#mainDisplay');
-    // Projects/form state
-    this.mainDisplayState = '';
+    this.projectsBtnText = document.querySelector('#projectsBtn').querySelector('h2');
+    this.projectsBtnIcon = document.querySelector('#projectsBtn').querySelector('i');
+    this.contactBtnText = document.querySelector('#contactBtn').querySelector('h2');
+    this.contactBtnIcon = document.querySelector('#contactBtn').querySelector('i');
+    // Projects/form/about state
+    this.mainDisplayState = 'about';
   }
 
   // Print text to jumbotron
@@ -41,25 +45,23 @@ class UI {
   // Change state of main display section
   changeMainDisplayState(state, data){
     switch(this.mainDisplayState){
-      case '':
-        if(state === 'projects'){
-          this.toggleProjects(data);
-        }
-        if(state === 'contact'){
-          this.toggleContactForm();
-        }
-        break;
       case 'projects':
         animation.slideOutLeft(this.mainDisplay, 500, () => {
           // Clear main display after fadeout
           this.mainDisplay.innerHTML = '';
 
           // Display state
-          if(state === 'projects'){
-            this.toggleProjects(data);
-          }
           if(state === 'contact'){
+            this.projectsBtnText.textContent = 'Projects';
+            this.projectsBtnIcon.className = 'fa fa-briefcase';
+            this.contactBtnText.textContent = 'About Me';
+            this.contactBtnIcon.className = 'fa fa-address-card';
             this.toggleContactForm();
+          }
+          if(state === 'about'){
+            this.projectsBtnText.textContent = 'Projects';
+            this.projectsBtnIcon.className = 'fa fa-briefcase';
+            this.toggleAbout();
           }
         });
         break;
@@ -70,9 +72,33 @@ class UI {
 
           // Display state
           if(state === 'projects'){
+            this.projectsBtnText.textContent = 'About Me';
+            this.projectsBtnIcon.className = 'fa fa-address-card';
+            this.contactBtnText.textContent = 'Contact';
+            this.contactBtnIcon.className = 'fa fa-envelope';
+            this.toggleProjects(data);
+          }
+          if(state === 'about'){
+            this.contactBtnText.textContent = 'Contact';
+            this.contactBtnIcon.className = 'fa fa-envelope';
+            this.toggleAbout();
+          }
+        });
+        break;
+      case 'about':
+        animation.slideOutDown(this.mainDisplay, 500, () => {
+          // Clear main display after slideout
+          this.mainDisplay.innerHTML = '';
+
+          // Display state
+          if(state === 'projects'){
+            this.projectsBtnText.textContent = 'About Me';
+            this.projectsBtnIcon.className = 'fa fa-address-card';
             this.toggleProjects(data);
           }
           if(state === 'contact'){
+            this.contactBtnText.textContent = 'About Me';
+            this.contactBtnIcon.className = 'fa fa-address-card';
             this.toggleContactForm();
           }
         });
@@ -82,94 +108,97 @@ class UI {
     }
   }
 
+  // Display about
+  toggleAbout(){
+    // Set main display state
+    this.mainDisplayState = 'about';
+
+    const about = document.createElement('div');
+    about.innerHTML = `
+      <h1 class="display-4"><strong>About Me</strong></h1>
+      This is the about
+    `;
+
+    this.mainDisplay.appendChild(about);
+
+    animation.slideInUp(this.mainDisplay, 500);
+  }
+
   // Display projects
   toggleProjects(projects){
-    if(this.mainDisplayState !== 'projects'){
-      // Set main display state
-      this.mainDisplayState = 'projects';
-      // Create projects grid
-      const projectsGrid = document.createElement('div');
-      projectsGrid.className = 'row';
-      projectsGrid.id = 'projectsGrid';
+    // Set main display state
+    this.mainDisplayState = 'projects';
+    // Create projects grid
+    const projectsGrid = document.createElement('div');
+    projectsGrid.className = 'row';
+    projectsGrid.id = 'projectsGrid';
 
-      // Loop through projects and make project cards
-      projects.forEach((project) => {
-        console.log(project);
-        // Create project card
-        const card = document.createElement('div');
-        card.className = 'card hoverHL col-md-12 pt-4 pb-4 my-2';
-        card.innerHTML = `
-          <div class="row">
-            <div class="col-md-8 col-sm-12">
-              <h4>${project.name}</h4>
-              ${project.description !== null ? `<p>${project.description}</p>` : ''}
-            </div>
-            <div class="col-md-4 d-inline-flex align-items-start justify-content-around">
-              <a href="${project.html_url}" target="_blank" class="btn btn-dark">GitHub Repository</a>
-              ${project.has_pages ? `<a href="https://nasnyder91.github.io/${project.name}" target="_blank" class="btn btn-primary">Webpage</a>` : '<a href="#" class="btn btn-primary float-right disabled">Webpage</a>'}
-            </div>
+    projectsGrid.innerHTML = `<h1 class="display-4"><strong>Projects</strong></h1>`;
+
+    // Loop through projects and make project cards
+    projects.forEach((project) => {
+      // Create project card
+      const card = document.createElement('div');
+      card.className = 'card hoverHL col-md-12 pt-4 pb-4 my-2';
+      card.innerHTML = `
+        <div class="row">
+          <div class="col-md-8 col-sm-12">
+            <h4>${project.name}</h4>
+            ${project.description !== null ? `<p>${project.description}</p>` : ''}
           </div>
-        `;
-        // Append project card to projects grid
-        projectsGrid.appendChild(card);
-      });
+          <div class="col-md-4 d-inline-flex align-items-start justify-content-around">
+            <a href="${project.html_url}" target="_blank" class="btn btn-dark">GitHub Repository</a>
+            ${project.has_pages ? `<a href="https://nasnyder91.github.io/${project.name}" target="_blank" class="btn btn-primary">Webpage</a>` : '<a href="#" class="btn btn-primary float-right disabled">Webpage</a>'}
+          </div>
+        </div>
+      `;
+      // Append project card to projects grid
+      projectsGrid.appendChild(card);
+    });
 
-      // Append projects grid to main display section
-      this.mainDisplay.appendChild(projectsGrid);
+    // Append projects grid to main display section
+    this.mainDisplay.appendChild(projectsGrid);
 
-      // Slide in the main display
-      animation.slideInRight(this.mainDisplay, 500);
-    } else{
-      // Slide out main display and remove projects grid
-      animation.slideOutLeft(this.mainDisplay, 500, () => {
-        this.mainDisplay.innerHTML = '';
-        this.mainDisplayState = '';
-      });
-    }
+    // Slide in the main display
+    animation.slideInRight(this.mainDisplay, 500);
   }
 
   // Toggle contact form
   toggleContactForm(){
-    if(this.mainDisplayState !== 'contact'){
-      // Set main display state
-      this.mainDisplayState = 'contact';
-      // Create contact form
-      const contact = document.createElement('div');
-      contact.innerHTML = `
-        <h3 class="orange" id="formThankYou" style="display:none">Your message has been sent.  Thank you.</h3>
-        <form class='form-horizontal col-sm-12 container' id="contactForm" novalidate>
-          <div class='form-group'>
-            <label>Name</label>
-            <input class='form-control needs-validation' id="name" placeholder='Enter your name' type='text' name="name" required>
-            <div class="invalid-feedback">Please enter your name.</div>
-          </div>
-          <div class='form-group'>
-            <label>E-Mail</label>
-            <input class='form-control needs-validation' id="email" placeholder='Enter your email address' type='email' name="email" required>
-            <div class="invalid-feedback">Please enter a valid email address.</div>
-          </div>
-          <div class='form-group'>
-            <label>Message</label>
-            <textarea id='message' class='form-control needs-validation' placeholder='Enter your message' name='body' required></textarea>
-            <div class="invalid-feedback">Please enter a message.</div>
-          </div>
-          <input type='submit' value="Send" class='btn btn-success btn-block'>
-          <input type='hidden' name='_next' value='' />
-        </form>
-      `;
+    // Set main display state
+    this.mainDisplayState = 'contact';
+    // Create contact form
+    const contact = document.createElement('div');
+    contact.innerHTML = `
+      <h1 class="display-4"><strong>Contact Me</strong></h1>
+      <h3 class="orange" id="formThankYou" style="display:none">Your message has been sent.  Thank you.</h3>
+      <form class='form-horizontal col-sm-12 container' id="contactForm" action="https://formsubmit.io/send/87d09a81-6fe7-4702-9a3a-f2799aa8cd10" novalidate>
+        <input name="_redirect" type="hidden" value="localhost:8080">
+        <div class='form-group'>
+          <label>Name</label>
+          <input class='form-control needs-validation' id="name" placeholder='Enter your name' type='text' name="name" required>
+          <div class="invalid-feedback">Please enter your name.</div>
+        </div>
+        <div class='form-group'>
+          <label>E-Mail</label>
+          <input class='form-control needs-validation' id="email" placeholder='Enter your email address' type='email' name="email" required>
+          <div class="invalid-feedback">Please enter a valid email address.</div>
+        </div>
+        <div class='form-group'>
+          <label>Message</label>
+          <textarea id='message' class='form-control needs-validation' placeholder='Enter your message' name='comment' required></textarea>
+          <div class="invalid-feedback">Please enter a message.</div>
+        </div>
+        <input name="_formsubmit_id" type="text" style="display:none">
+        <input type='submit' value="Send" class='btn btn-success btn-block'>
+      </form>
+    `;
 
-      // Append contact form to main display
-      this.mainDisplay.appendChild(contact);
+    // Append contact form to main display
+    this.mainDisplay.appendChild(contact);
 
-      // Slide in the main display
-      animation.slideInLeft(this.mainDisplay, 500);
-    } else{
-      // Slide out main display and remove contact form
-      animation.slideOutRight(this.mainDisplay, 500, () => {
-        this.mainDisplay.innerHTML = '';
-        this.mainDisplayState = '';
-      });
-    }
+    // Slide in the main display
+    animation.slideInLeft(this.mainDisplay, 500);
   }
 }
 

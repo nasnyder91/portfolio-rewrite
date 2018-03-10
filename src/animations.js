@@ -89,6 +89,32 @@ class Animation {
       }
     }, duration);
   }
+
+  // Slide out down
+  slideOutDown(element, duration, callback){
+    element.classList.add('slideOutDown');
+
+    element.style.setProperty('--duration', duration + 'ms');
+    setTimeout(() => {
+      element.classList.remove('slideOutDown');
+      if(callback){
+        callback();
+      }
+    }, duration);
+  }
+
+  // Slide in up
+  slideInUp(element, duration, callback){
+    element.classList.add('slideInUp');
+
+    element.style.setProperty('--duration', duration + 'ms');
+    setTimeout(() => {
+      element.classList.remove('slideInUp');
+      if(callback){
+        callback();
+      }
+    }, duration);
+  }
 }
 
 export const animation = new Animation();
