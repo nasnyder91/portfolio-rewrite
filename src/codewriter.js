@@ -1,5 +1,6 @@
 import { ui } from './ui';
 
+
 class CodeWriter {
   constructor(){
     this.entityMap = {
@@ -13,6 +14,14 @@ class CodeWriter {
                       '=': '&#x3D;'
                     };
     this.finalText = "<div class='container text-center'>~*<h1 class='display-3'>Nick Snyder <span class='orange'>|</span> <span class='blue'>Developer</span></h1>~*<br><br>~*<h2>Welcome to my portfolio</h2>~</div>";
+    String.prototype.replaceAll = function(search, replace)
+    {
+        if (replace === undefined) {
+            return this.toString();
+        }
+
+        return this.split(search).join(replace);
+    }
   }
 
   // Cycle through final text and send to UI controller
@@ -43,7 +52,7 @@ class CodeWriter {
         }
       }
 
-      ui.printText(currentOutput + '|');
+      ui.printText(codeWriter._colorText(currentOutput) + '|');
 
       if(iteration+1 === finalTextArr.length){
         ui.changeJumbotronState('html');
@@ -58,24 +67,23 @@ class CodeWriter {
 
 
   _colorText(input){
-    let output = input;
-    output = output.replace("&lt;div", "&lt;<span style='color:red;'>div</span>");
-    output = output.replace("div&gt;", "<span style='color:red;'>div</span>&gt;");
+    let output = input.replaceAll("&lt;div", "&lt;<span style='color:red;'>div</span>");
+    output = output.replaceAll("div&gt;", "<span style='color:red;'>div</span>&gt;");
 
-    output = output.replace("&lt;h1", "&lt;<span style='color:red;'>h1</span>");
-    output = output.replace("h1&gt;", "<span style='color:red;'>h1</span>&gt;");
+    output = output.replaceAll("&lt;h1", "&lt;<span style='color:red;'>h1</span>");
+    output = output.replaceAll("h1&gt;", "<span style='color:red;'>h1</span>&gt;");
 
-    output = output.replace("&lt;h2", "&lt;<span style='color:red;'>h2</span>");
-    output = output.replace("h2&gt;", "<span style='color:red;'>h2</span>&gt;");
+    output = output.replaceAll("&lt;h2", "&lt;<span style='color:red;'>h2</span>");
+    output = output.replaceAll("h2&gt;", "<span style='color:red;'>h2</span>&gt;");
 
-    output = output.replace("&lt;span", "&lt;<span style='color:red;'>span</span>");
-    output = output.replace("span&gt;", "<span style='color:red;'>span</span>&gt;");
+    output = output.replaceAll("&lt;span", "&lt;<span style='color:red;'>span</span>");
+    output = output.replaceAll("span&gt;", "<span style='color:red;'>span</span>&gt;");
 
-    output = output.replace("br&gt;", "<span style='color:red;'>br</span>&gt;");
+    output = output.replaceAll("br&gt;", "<span style='color:red;'>br</span>&gt;");
 
-    output = output.replace("class=", "<span style='color:orange;'>class</span>=");
+    output = output.replaceAll("class=", "<span style='color:orange;'>class</span>=");
 
-    output = output.replace("id=", "<span style='color:blue;'>id</span>=");
+    output = output.replaceAll("id=", "<span style='color:blue;'>id</span>=");
 
     return output;
   }
@@ -84,5 +92,7 @@ class CodeWriter {
     return String(input).replace(/[&<>"'`=\/]/g, (s) => this.entityMap[s]);
   }
 }
+
+
 
 export const codeWriter = new CodeWriter();

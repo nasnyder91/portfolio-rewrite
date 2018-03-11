@@ -5,8 +5,10 @@ class UI {
     // UI Elements
     this.jumboText = document.querySelector('#jumboText');
     this.mainDisplay = document.querySelector('#mainDisplay');
+    this.projectsBtn = document.querySelector('#projectsBtn');
     this.projectsBtnText = document.querySelector('#projectsBtn').querySelector('h2');
     this.projectsBtnIcon = document.querySelector('#projectsBtn').querySelector('i');
+    this.contactBtn = document.querySelector('#contactBtn');
     this.contactBtnText = document.querySelector('#contactBtn').querySelector('h2');
     this.contactBtnIcon = document.querySelector('#contactBtn').querySelector('i');
     // Projects/form/about state
