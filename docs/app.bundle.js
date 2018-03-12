@@ -3731,8 +3731,14 @@ var UI = function () {
     // UI Elements
     this.jumboText = document.querySelector('#jumboText');
     this.mainDisplay = document.querySelector('#mainDisplay');
-    // Projects/form state
-    this.mainDisplayState = '';
+    this.projectsBtn = document.querySelector('#projectsBtn');
+    this.projectsBtnText = document.querySelector('#projectsBtn').querySelector('h2');
+    this.projectsBtnIcon = document.querySelector('#projectsBtn').querySelector('i');
+    this.contactBtn = document.querySelector('#contactBtn');
+    this.contactBtnText = document.querySelector('#contactBtn').querySelector('h2');
+    this.contactBtnIcon = document.querySelector('#contactBtn').querySelector('i');
+    // Projects/form/about state
+    this.mainDisplayState = 'about';
   }
 
   // Print text to jumbotron
@@ -3759,7 +3765,7 @@ var UI = function () {
       }
       if (state === 'html') {
         _animations.animation.fadeOutElement(this.jumboText, 2000, function () {
-          _this.jumboText.innerHTML = '\n          <div class=\'text-center\'>\n            <h1 class="display-3 text-secondary">Nick Snyder <span class="orange">|</span> <span class="blue">Developer</span></h1>\n            <br><br>\n            <h2 class="text-secondary">Welcome to my portfolio.</h2>\n          </div>\n          <button class="replayBtn btn btn-outline-secondary btn-sm float-right">Replay</button>\n        ';
+          _this.jumboText.innerHTML = '\n          <div class=\'text-center\'>\n            <h1 class="display-3 text-secondary">Nick Snyder <span class="orange">|</span> <span class="blue">Developer</span></h1>\n            <br><br>\n            <h2 class="text-secondary subtitle">Welcome to my portfolio.</h2>\n          </div>\n          <button class="replayBtn btn btn-outline-secondary btn-sm float-right">Replay</button>\n        ';
           _this.jumboText.classList.remove('fadeout');
           _animations.animation.slideInDown(_this.jumboText, 1500);
         });
@@ -3774,25 +3780,23 @@ var UI = function () {
       var _this2 = this;
 
       switch (this.mainDisplayState) {
-        case '':
-          if (state === 'projects') {
-            this.toggleProjects(data);
-          }
-          if (state === 'contact') {
-            this.toggleContactForm();
-          }
-          break;
         case 'projects':
           _animations.animation.slideOutLeft(this.mainDisplay, 500, function () {
             // Clear main display after fadeout
             _this2.mainDisplay.innerHTML = '';
 
             // Display state
-            if (state === 'projects') {
-              _this2.toggleProjects(data);
-            }
             if (state === 'contact') {
+              _this2.projectsBtnText.textContent = 'Projects';
+              _this2.projectsBtnIcon.className = 'fa fa-briefcase';
+              _this2.contactBtnText.textContent = 'About Me';
+              _this2.contactBtnIcon.className = 'fa fa-address-card';
               _this2.toggleContactForm();
+            }
+            if (state === 'about') {
+              _this2.projectsBtnText.textContent = 'Projects';
+              _this2.projectsBtnIcon.className = 'fa fa-briefcase';
+              _this2.toggleAbout();
             }
           });
           break;
@@ -3803,9 +3807,33 @@ var UI = function () {
 
             // Display state
             if (state === 'projects') {
+              _this2.projectsBtnText.textContent = 'About Me';
+              _this2.projectsBtnIcon.className = 'fa fa-address-card';
+              _this2.contactBtnText.textContent = 'Contact';
+              _this2.contactBtnIcon.className = 'fa fa-envelope';
+              _this2.toggleProjects(data);
+            }
+            if (state === 'about') {
+              _this2.contactBtnText.textContent = 'Contact';
+              _this2.contactBtnIcon.className = 'fa fa-envelope';
+              _this2.toggleAbout();
+            }
+          });
+          break;
+        case 'about':
+          _animations.animation.slideOutDown(this.mainDisplay, 500, function () {
+            // Clear main display after slideout
+            _this2.mainDisplay.innerHTML = '';
+
+            // Display state
+            if (state === 'projects') {
+              _this2.projectsBtnText.textContent = 'About Me';
+              _this2.projectsBtnIcon.className = 'fa fa-address-card';
               _this2.toggleProjects(data);
             }
             if (state === 'contact') {
+              _this2.contactBtnText.textContent = 'About Me';
+              _this2.contactBtnIcon.className = 'fa fa-address-card';
               _this2.toggleContactForm();
             }
           });
@@ -3815,44 +3843,51 @@ var UI = function () {
       }
     }
 
+    // Display about
+
+  }, {
+    key: 'toggleAbout',
+    value: function toggleAbout() {
+      // Set main display state
+      this.mainDisplayState = 'about';
+
+      var about = document.createElement('div');
+      about.innerHTML = '\n      <h1 class="display-5"><strong>About Me</strong></h1>\n      This is the about\n    ';
+
+      this.mainDisplay.appendChild(about);
+
+      _animations.animation.slideInUp(this.mainDisplay, 500);
+    }
+
     // Display projects
 
   }, {
     key: 'toggleProjects',
     value: function toggleProjects(projects) {
-      var _this3 = this;
+      // Set main display state
+      this.mainDisplayState = 'projects';
+      // Create projects grid
+      var projectsGrid = document.createElement('div');
+      projectsGrid.className = 'row';
+      projectsGrid.id = 'projectsGrid';
 
-      if (this.mainDisplayState !== 'projects') {
-        // Set main display state
-        this.mainDisplayState = 'projects';
-        // Create projects grid
-        var projectsGrid = document.createElement('div');
-        projectsGrid.className = 'row';
-        projectsGrid.id = 'projectsGrid';
+      projectsGrid.innerHTML = '\n      <div class="indentRight">\n        <h1 class="display-5"><strong>Projects</strong></h1>\n        <p class="text-muted">Powered by the GitHub API</p>\n      </div>\n    ';
 
-        // Loop through projects and make project cards
-        projects.forEach(function (project) {
-          console.log(project);
-          // Create project card
-          var card = document.createElement('div');
-          card.className = 'card hoverHL col-md-12 pt-4 pb-4 my-2';
-          card.innerHTML = '\n          <div class="row">\n            <div class="col-md-8 col-sm-12">\n              <h4>' + project.name + '</h4>\n              ' + (project.description !== null ? '<p>' + project.description + '</p>' : '') + '\n            </div>\n            <div class="col-md-4 d-inline-flex align-items-start justify-content-around">\n              <a href="' + project.html_url + '" target="_blank" class="btn btn-dark">GitHub Repository</a>\n              ' + (project.has_pages ? '<a href="https://nasnyder91.github.io/' + project.name + '" target="_blank" class="btn btn-primary">Webpage</a>' : '<a href="#" class="btn btn-primary float-right disabled">Webpage</a>') + '\n            </div>\n          </div>\n        ';
-          // Append project card to projects grid
-          projectsGrid.appendChild(card);
-        });
+      // Loop through projects and make project cards
+      projects.forEach(function (project) {
+        // Create project card
+        var card = document.createElement('div');
+        card.className = 'card hoverHL col-md-12 pt-4 pb-4 my-2';
+        card.innerHTML = '\n        <div class="row">\n          <div class="col-xl-8 col-lg-12 border-right">\n            <h4>' + project.name + '</h4>\n            ' + (project.description !== null ? '<p>' + project.description + '</p>' : '') + '\n          </div>\n          <div class="col-xl-4 col-lg-12 d-flex align-items-start justify-content-around gitLinks">\n            <a href="' + project.html_url + '" target="_blank" class="btn btn-dark mr-3">GitHub Repository</a>\n            ' + (project.has_pages ? '<a href="https://nasnyder91.github.io/' + project.name + '" target="_blank" class="btn btn-primary">Webpage</a>' : '<a href="#" class="btn btn-primary float-right disabled">Webpage</a>') + '\n          </div>\n        </div>\n      ';
+        // Append project card to projects grid
+        projectsGrid.appendChild(card);
+      });
 
-        // Append projects grid to main display section
-        this.mainDisplay.appendChild(projectsGrid);
+      // Append projects grid to main display section
+      this.mainDisplay.appendChild(projectsGrid);
 
-        // Slide in the main display
-        _animations.animation.slideInRight(this.mainDisplay, 500);
-      } else {
-        // Slide out main display and remove projects grid
-        _animations.animation.slideOutLeft(this.mainDisplay, 500, function () {
-          _this3.mainDisplay.innerHTML = '';
-          _this3.mainDisplayState = '';
-        });
-      }
+      // Slide in the main display
+      _animations.animation.slideInRight(this.mainDisplay, 500);
     }
 
     // Toggle contact form
@@ -3860,27 +3895,17 @@ var UI = function () {
   }, {
     key: 'toggleContactForm',
     value: function toggleContactForm() {
-      var _this4 = this;
+      // Set main display state
+      this.mainDisplayState = 'contact';
+      // Create contact form
+      var contact = document.createElement('div');
+      contact.innerHTML = '\n      <h1 class="display-5"><strong>Contact Me</strong></h1>\n      <h3 class="orange" id="formThankYou" style="display:none">Your message has been sent.  Thank you.</h3>\n      <form class=\'form-horizontal col-sm-12 container\' id="contactForm" action="https://formsubmit.io/send/87d09a81-6fe7-4702-9a3a-f2799aa8cd10" novalidate>\n        <input name="_redirect" type="hidden" value="localhost:8080">\n        <div class=\'form-group\'>\n          <label>Name</label>\n          <input class=\'form-control needs-validation\' id="name" placeholder=\'Enter your name\' type=\'text\' name="name" required>\n          <div class="invalid-feedback">Please enter your name.</div>\n        </div>\n        <div class=\'form-group\'>\n          <label>E-Mail</label>\n          <input class=\'form-control needs-validation\' id="email" placeholder=\'Enter your email address\' type=\'email\' name="email" required>\n          <div class="invalid-feedback">Please enter a valid email address.</div>\n        </div>\n        <div class=\'form-group\'>\n          <label>Message</label>\n          <textarea id=\'message\' class=\'form-control needs-validation\' placeholder=\'Enter your message\' name=\'comment\' required></textarea>\n          <div class="invalid-feedback">Please enter a message.</div>\n        </div>\n        <input name="_formsubmit_id" type="text" style="display:none">\n        <input type=\'submit\' value="Send" class=\'btn btn-success btn-block\'>\n      </form>\n    ';
 
-      if (this.mainDisplayState !== 'contact') {
-        // Set main display state
-        this.mainDisplayState = 'contact';
-        // Create contact form
-        var contact = document.createElement('div');
-        contact.innerHTML = '\n        <h3 class="orange" id="formThankYou" style="display:none">Your message has been sent.  Thank you.</h3>\n        <form class=\'form-horizontal col-sm-12 container\' id="contactForm" novalidate>\n          <div class=\'form-group\'>\n            <label>Name</label>\n            <input class=\'form-control needs-validation\' id="name" placeholder=\'Enter your name\' type=\'text\' name="name" required>\n            <div class="invalid-feedback">Please enter your name.</div>\n          </div>\n          <div class=\'form-group\'>\n            <label>E-Mail</label>\n            <input class=\'form-control needs-validation\' id="email" placeholder=\'Enter your email address\' type=\'email\' name="email" required>\n            <div class="invalid-feedback">Please enter a valid email address.</div>\n          </div>\n          <div class=\'form-group\'>\n            <label>Message</label>\n            <textarea id=\'message\' class=\'form-control needs-validation\' placeholder=\'Enter your message\' name=\'body\' required></textarea>\n            <div class="invalid-feedback">Please enter a message.</div>\n          </div>\n          <input type=\'submit\' value="Send" class=\'btn btn-success btn-block\'>\n          <input type=\'hidden\' name=\'_next\' value=\'\' />\n        </form>\n      ';
+      // Append contact form to main display
+      this.mainDisplay.appendChild(contact);
 
-        // Append contact form to main display
-        this.mainDisplay.appendChild(contact);
-
-        // Slide in the main display
-        _animations.animation.slideInLeft(this.mainDisplay, 500);
-      } else {
-        // Slide out main display and remove contact form
-        _animations.animation.slideOutRight(this.mainDisplay, 500, function () {
-          _this4.mainDisplay.innerHTML = '';
-          _this4.mainDisplayState = '';
-        });
-      }
+      // Slide in the main display
+      _animations.animation.slideInLeft(this.mainDisplay, 500);
     }
   }]);
 
@@ -9220,7 +9245,10 @@ var _formsubmit = __webpack_require__(333);
 
 //-----------------------------------------EVENT LISTENERS-----------------------------------------
 // Begin 'animation' on DOM load
-document.addEventListener('DOMContentLoaded', writeCode);
+document.addEventListener('DOMContentLoaded', function () {
+  _ui.ui.toggleAbout();
+  writeCode();
+});
 // Replay button event listener
 document.querySelector('#jumboText').addEventListener('click', replayJumbo);
 // Display projects event listener
@@ -9245,22 +9273,30 @@ function replayJumbo(e) {
 }
 
 // Projects button pressed
-function displayProjects() {
-  if (sessionStorage.getItem('repos')) {
-    _ui.ui.changeMainDisplayState('projects', JSON.parse(sessionStorage.getItem('repos')));
+function displayProjects(e) {
+  if (document.querySelector('#projectsBtn').querySelector('h2').textContent === 'About Me') {
+    _ui.ui.changeMainDisplayState('about');
   } else {
-    _github.github.getRepos().then(function (data) {
-      sessionStorage.setItem('repos', JSON.stringify(data.repos));
-      _ui.ui.changeMainDisplayState('projects', data.repos);
-    }).catch(function (err) {
-      return console.log(err);
-    });
+    if (sessionStorage.getItem('repos')) {
+      _ui.ui.changeMainDisplayState('projects', JSON.parse(sessionStorage.getItem('repos')));
+    } else {
+      _github.github.getRepos().then(function (data) {
+        sessionStorage.setItem('repos', JSON.stringify(data.repos));
+        _ui.ui.changeMainDisplayState('projects', data.repos);
+      }).catch(function (err) {
+        return console.log(err);
+      });
+    }
   }
 }
 
 // Contact Form button pressed
 function displayContactForm() {
-  _ui.ui.changeMainDisplayState('contact');
+  if (document.querySelector('#contactBtn').querySelector('h2').textContent === 'About Me') {
+    _ui.ui.changeMainDisplayState('about');
+  } else {
+    _ui.ui.changeMainDisplayState('contact');
+  }
 }
 
 // Check form validity on input blur
@@ -9275,7 +9311,8 @@ function checkFormValidityAndSubmit(e) {
     if (!e.target.parentElement.checkValidity()) {
       _formsubmit.formSubmit.showFormInvalid(e.target.parentElement);
     } else {
-      _formsubmit.formSubmit.submitForm(e.target.parentElement);
+      _formsubmit.formSubmit.clearForm(e.target.parentElement);
+      _formsubmit.formSubmit.showMessage();
     }
   }
 }
@@ -9411,6 +9448,38 @@ var Animation = function () {
         }
       }, duration);
     }
+
+    // Slide out down
+
+  }, {
+    key: 'slideOutDown',
+    value: function slideOutDown(element, duration, callback) {
+      element.classList.add('slideOutDown');
+
+      element.style.setProperty('--duration', duration + 'ms');
+      setTimeout(function () {
+        element.classList.remove('slideOutDown');
+        if (callback) {
+          callback();
+        }
+      }, duration);
+    }
+
+    // Slide in up
+
+  }, {
+    key: 'slideInUp',
+    value: function slideInUp(element, duration, callback) {
+      element.classList.add('slideInUp');
+
+      element.style.setProperty('--duration', duration + 'ms');
+      setTimeout(function () {
+        element.classList.remove('slideInUp');
+        if (callback) {
+          callback();
+        }
+      }, duration);
+    }
   }]);
 
   return Animation;
@@ -9451,6 +9520,13 @@ var CodeWriter = function () {
       '=': '&#x3D;'
     };
     this.finalText = "<div class='container text-center'>~*<h1 class='display-3'>Nick Snyder <span class='orange'>|</span> <span class='blue'>Developer</span></h1>~*<br><br>~*<h2>Welcome to my portfolio</h2>~</div>";
+    String.prototype.replaceAll = function (search, replace) {
+      if (replace === undefined) {
+        return this.toString();
+      }
+
+      return this.split(search).join(replace);
+    };
   }
 
   // Cycle through final text and send to UI controller
@@ -9485,7 +9561,7 @@ var CodeWriter = function () {
           }
         }
 
-        _ui.ui.printText(currentOutput + '|');
+        _ui.ui.printText(codeWriter._colorText(currentOutput) + '|');
 
         if (iteration + 1 === finalTextArr.length) {
           _ui.ui.changeJumbotronState('html');
@@ -9500,24 +9576,23 @@ var CodeWriter = function () {
   }, {
     key: '_colorText',
     value: function _colorText(input) {
-      var output = input;
-      output = output.replace("&lt;div", "&lt;<span style='color:red;'>div</span>");
-      output = output.replace("div&gt;", "<span style='color:red;'>div</span>&gt;");
+      var output = input.replaceAll("&lt;div", "&lt;<span style='color:red;'>div</span>");
+      output = output.replaceAll("div&gt;", "<span style='color:red;'>div</span>&gt;");
 
-      output = output.replace("&lt;h1", "&lt;<span style='color:red;'>h1</span>");
-      output = output.replace("h1&gt;", "<span style='color:red;'>h1</span>&gt;");
+      output = output.replaceAll("&lt;h1", "&lt;<span style='color:red;'>h1</span>");
+      output = output.replaceAll("h1&gt;", "<span style='color:red;'>h1</span>&gt;");
 
-      output = output.replace("&lt;h2", "&lt;<span style='color:red;'>h2</span>");
-      output = output.replace("h2&gt;", "<span style='color:red;'>h2</span>&gt;");
+      output = output.replaceAll("&lt;h2", "&lt;<span style='color:red;'>h2</span>");
+      output = output.replaceAll("h2&gt;", "<span style='color:red;'>h2</span>&gt;");
 
-      output = output.replace("&lt;span", "&lt;<span style='color:red;'>span</span>");
-      output = output.replace("span&gt;", "<span style='color:red;'>span</span>&gt;");
+      output = output.replaceAll("&lt;span", "&lt;<span style='color:red;'>span</span>");
+      output = output.replaceAll("span&gt;", "<span style='color:red;'>span</span>&gt;");
 
-      output = output.replace("br&gt;", "<span style='color:red;'>br</span>&gt;");
+      output = output.replaceAll("br&gt;", "<span style='color:red;'>br</span>&gt;");
 
-      output = output.replace("class=", "<span style='color:orange;'>class</span>=");
+      output = output.replaceAll("class=", "<span style='color:orange;'>class</span>=");
 
-      output = output.replace("id=", "<span style='color:blue;'>id</span>=");
+      output = output.replaceAll("id=", "<span style='color:blue;'>id</span>=");
 
       return output;
     }
@@ -9653,35 +9728,28 @@ var FormSubmit = function () {
         }
       }
     }
+
+    // Clear the form inputs
+
   }, {
-    key: 'submitForm',
-    value: function submitForm(form) {
-      var name = form.querySelector('#name').value;
-      var email = form.querySelector('#email').value;
-      var message = form.querySelector('#message').value;
+    key: 'clearForm',
+    value: function clearForm(form) {
+      form.querySelector('#name').value = '';
+      form.querySelector('#email').value = '';
+      form.querySelector('#message').value = '';
+    }
 
-      var url = 'https://formspree.io/snyderdeveloper@gmail.com';
-      var data = {
-        name: name,
-        _replyto: email,
-        email: email,
-        comments: message,
-        _subject: 'Portfolio form submission'
-      };
+    // Show thank you message
 
-      fetch(url, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }).catch(function (error) {
-        return console.error('Error:', error);
-      }).then(function (res) {
-        return res.json();
-      }).then(function (response) {
-        return console.log('Success:', response);
-      });
+  }, {
+    key: 'showMessage',
+    value: function showMessage() {
+      var message = document.querySelector('#formThankYou');
+      message.style.display = 'block';
+
+      setTimeout(function () {
+        return message.style.display = 'none';
+      }, 5000);
     }
   }, {
     key: 'makeInvalid',
