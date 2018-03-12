@@ -1,3 +1,7 @@
 html {
   font-size: .6rem !important;
 }
+
+.jumbotron {
+  height: 200px !important;
+}

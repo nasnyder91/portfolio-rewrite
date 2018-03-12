@@ -1,0 +1,12 @@
+.display-3 {
+  font-size: 3rem !important;
+}
+
+.jumbotron {
+  height: 125px !important;
+}
+
+.subtitle {
+  font-size: 1.25rem !important;
+  letter-spacing: 2px !important;
+}

@@ -34,7 +34,7 @@ class UI {
           <div class='text-center'>
             <h1 class="display-3 text-secondary">Nick Snyder <span class="orange">|</span> <span class="blue">Developer</span></h1>
             <br><br>
-            <h2 class="text-secondary">Welcome to my portfolio.</h2>
+            <h2 class="text-secondary subtitle">Welcome to my portfolio.</h2>
           </div>
           <button class="replayBtn btn btn-outline-secondary btn-sm float-right">Replay</button>
         `;
@@ -117,7 +117,7 @@ class UI {
 
     const about = document.createElement('div');
     about.innerHTML = `
-      <h1 class="display-4"><strong>About Me</strong></h1>
+      <h1 class="display-5"><strong>About Me</strong></h1>
       This is the about
     `;
 
@@ -137,7 +137,7 @@ class UI {
 
     projectsGrid.innerHTML = `
       <div>
-        <h1 class="display-4"><strong>Projects</strong></h1>
+        <h1 class="display-5"><strong>Projects</strong></h1>
         <p class="text-muted">Powered by the GitHub API</p>
       </div>
     `;
@@ -177,7 +177,7 @@ class UI {
     // Create contact form
     const contact = document.createElement('div');
     contact.innerHTML = `
-      <h1 class="display-4"><strong>Contact Me</strong></h1>
+      <h1 class="display-5"><strong>Contact Me</strong></h1>
       <h3 class="orange" id="formThankYou" style="display:none">Your message has been sent.  Thank you.</h3>
       <form class='form-horizontal col-sm-12 container' id="contactForm" action="https://formsubmit.io/send/87d09a81-6fe7-4702-9a3a-f2799aa8cd10" novalidate>
         <input name="_redirect" type="hidden" value="localhost:8080">
