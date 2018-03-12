@@ -1,0 +1,29 @@
+html {
+  font-size: .4rem !important;
+}
+
+.jumbotron {
+  height: 150px !important;
+}
+
+#buttons h2{
+  letter-spacing: 3px !important;
+}
+
+#buttons i{
+  font-size:3rem !important;
+}
+
+.indentRight {
+  margin-left: 15px;
+}
+
+.btn-sm {
+  font-size: .8rem;
+  padding: 3px 6px 3px 6px;
+  border-width: 1px;
+}
+
+#socialLinks {
+  text-align: center;
+}

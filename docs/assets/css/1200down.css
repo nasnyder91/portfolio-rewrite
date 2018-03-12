@@ -1,0 +1,11 @@
+html {
+  font-size: .8rem !important;
+}
+
+.jumbotron {
+  height: 250px !important;
+}
+
+.gitLinks {
+  justify-content: left !important;
+}

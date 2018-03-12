@@ -1,4 +1,9 @@
 @import "animations.css";
+@import "1200down.css" screen and (max-width: 1200px);
+@import "1000down.css" screen and (max-width: 1000px);
+@import "768down.css" screen and (max-width: 770px);
+@import "500down.css" screen and (max-width: 500px);
+@import "400down.css" screen and (max-width: 400px);
 
 body,html{
     width: 100%;
@@ -7,11 +12,12 @@ body,html{
     padding: 0px;
     overflow-x:hidden;
     position: relative;
+    background-color: #E4E4E4;
+    font-size: 1rem;
 }
 
 .jumbotron {
-  height: 40vh;
-  min-height: 300px;
+  height: 300px;
 }
 
 .orange{
@@ -22,8 +28,12 @@ body,html{
   color: #0a69c9;
 }
 
+#buttons h2{
+  letter-spacing: 6px;
+}
+
 #buttons i{
-  font-size:60px;
+  font-size:4rem;
 }
 
 #mainDisplay {
@@ -37,4 +47,15 @@ body,html{
 
 .hoverHL:hover{
   background-color: rgba(255, 93, 0, 0.06);
+}
+
+.display-5 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.btn-sm {
+  font-size: .8rem;
+  padding: 5px 8px 5px 8px;
 }
