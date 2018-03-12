@@ -3,10 +3,14 @@
 }
 
 .jumbotron {
-  height: 125px !important;
+  height: 100px !important;
 }
 
 .subtitle {
   font-size: 1.25rem !important;
   letter-spacing: 2px !important;
+}
+
+.btn-sm {
+  padding: 2px 4px 2px 4px !important;
 }

@@ -136,7 +136,7 @@ class UI {
     projectsGrid.id = 'projectsGrid';
 
     projectsGrid.innerHTML = `
-      <div>
+      <div class="indentRight">
         <h1 class="display-5"><strong>Projects</strong></h1>
         <p class="text-muted">Powered by the GitHub API</p>
       </div>
@@ -153,8 +153,8 @@ class UI {
             <h4>${project.name}</h4>
             ${project.description !== null ? `<p>${project.description}</p>` : ''}
           </div>
-          <div class="col-xl-4 col-lg-12 d-flex align-items-start justify-content-around">
-            <a href="${project.html_url}" target="_blank" class="btn btn-dark">GitHub Repository</a>
+          <div class="col-xl-4 col-lg-12 d-flex align-items-start justify-content-around gitLinks">
+            <a href="${project.html_url}" target="_blank" class="btn btn-dark mr-3">GitHub Repository</a>
             ${project.has_pages ? `<a href="https://nasnyder91.github.io/${project.name}" target="_blank" class="btn btn-primary">Webpage</a>` : '<a href="#" class="btn btn-primary float-right disabled">Webpage</a>'}
           </div>
         </div>

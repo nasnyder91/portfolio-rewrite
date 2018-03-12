@@ -5,3 +5,7 @@ html {
 .jumbotron {
   height: 250px !important;
 }
+
+.gitLinks {
+  justify-content: left !important;
+}
