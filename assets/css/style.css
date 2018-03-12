@@ -1,4 +1,7 @@
 @import "animations.css";
+@import "1200down.css" screen and (max-width: 1200px);
+@import "1000down.css" screen and (max-width: 1000px);
+@import "770down.css" screen and (max-width: 770px);
 
 body,html{
     width: 100%;
@@ -8,6 +11,7 @@ body,html{
     overflow-x:hidden;
     position: relative;
     background-color: #E4E4E4;
+    font-size: 1rem;
 }
 
 .jumbotron {
@@ -23,8 +27,12 @@ body,html{
   color: #0a69c9;
 }
 
+#buttons h2{
+  letter-spacing: 6px;
+}
+
 #buttons i{
-  font-size:60px;
+  font-size:4rem;
 }
 
 #mainDisplay {

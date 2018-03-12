@@ -135,7 +135,12 @@ class UI {
     projectsGrid.className = 'row';
     projectsGrid.id = 'projectsGrid';
 
-    projectsGrid.innerHTML = `<h1 class="display-4"><strong>Projects</strong></h1>`;
+    projectsGrid.innerHTML = `
+      <div>
+        <h1 class="display-4"><strong>Projects</strong></h1>
+        <p class="text-muted">Powered by the GitHub API</p>
+      </div>
+    `;
 
     // Loop through projects and make project cards
     projects.forEach((project) => {
@@ -144,11 +149,11 @@ class UI {
       card.className = 'card hoverHL col-md-12 pt-4 pb-4 my-2';
       card.innerHTML = `
         <div class="row">
-          <div class="col-md-8 col-sm-12">
+          <div class="col-xl-8 col-lg-12 border-right">
             <h4>${project.name}</h4>
             ${project.description !== null ? `<p>${project.description}</p>` : ''}
           </div>
-          <div class="col-md-4 d-inline-flex align-items-start justify-content-around">
+          <div class="col-xl-4 col-lg-12 d-flex align-items-start justify-content-around">
             <a href="${project.html_url}" target="_blank" class="btn btn-dark">GitHub Repository</a>
             ${project.has_pages ? `<a href="https://nasnyder91.github.io/${project.name}" target="_blank" class="btn btn-primary">Webpage</a>` : '<a href="#" class="btn btn-primary float-right disabled">Webpage</a>'}
           </div>
