@@ -9519,7 +9519,7 @@ var CodeWriter = function () {
       '`': '&#x60;',
       '=': '&#x3D;'
     };
-    this.finalText = "<div class='container text-center'>~*<h1 class='display-3'>Nick Snyder <span class='orange'>|</span> <span class='blue'>Developer</span></h1>~*<br><br>~*<h2>Welcome to my portfolio</h2>~</div>";
+    this.finalText = "<div class='text-center'>~*<h1 class='display-3 text-secondary'>Nick Snyder <span class='orange'>|</span> <span class='blue'>Developer</span></h1>~*<br/><br/>~*<h2 class='text-secondary subtitle'>Welcome to my portfolio</h2>~</div>~<button class='replayBtn btn btn-outline-secondary btn-sm float-right'>Replay</button>";
     String.prototype.replaceAll = function (search, replace) {
       if (replace === undefined) {
         return this.toString();
@@ -9568,7 +9568,7 @@ var CodeWriter = function () {
           return;
         } else {
           iteration++;
-          return setTimeout(_loopThroughText, Math.floor(Math.random() * 80 + 5));
+          return setTimeout(_loopThroughText, 5 + Math.floor(Math.random() * 150 + 1));
         }
       }
       _loopThroughText(finalTextArr[iteration]);
@@ -9578,6 +9578,9 @@ var CodeWriter = function () {
     value: function _colorText(input) {
       var output = input.replaceAll("&lt;div", "&lt;<span style='color:red;'>div</span>");
       output = output.replaceAll("div&gt;", "<span style='color:red;'>div</span>&gt;");
+
+      output = output.replaceAll("&lt;button", "&lt;<span style='color:red;'>button</span>");
+      output = output.replaceAll("button&gt;", "<span style='color:red;'>button</span>&gt;");
 
       output = output.replaceAll("&lt;h1", "&lt;<span style='color:red;'>h1</span>");
       output = output.replaceAll("h1&gt;", "<span style='color:red;'>h1</span>&gt;");
