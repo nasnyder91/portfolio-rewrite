@@ -153,7 +153,7 @@ class UI {
             <h4>${project.name}</h4>
             ${project.description !== null ? `<p>${project.description}</p>` : ''}
           </div>
-          <div class="col-xl-4 col-lg-12 d-flex align-items-start justify-content-around gitLinks">
+          <div class="col-xl-4 col-lg-12 d-flex align-items-start justify-content-end gitLinks">
             <a href="${project.html_url}" target="_blank" class="btn btn-dark mr-3">GitHub Repository</a>
             ${project.has_pages ? `<a href="https://nasnyder91.github.io/${project.name}" target="_blank" class="btn btn-primary">Webpage</a>` : '<a href="#" class="btn btn-primary float-right disabled">Webpage</a>'}
           </div>
