@@ -18,3 +18,7 @@
 .gitLinks {
   justify-content: left !important;
 }
+
+#buttons h2{
+  font-size: 2.2rem !important;
+}

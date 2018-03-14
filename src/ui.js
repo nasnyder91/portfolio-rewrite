@@ -179,20 +179,21 @@ class UI {
     contact.innerHTML = `
       <h1 class="display-5"><strong>Contact Me</strong></h1>
       <h3 class="orange" id="formThankYou" style="display:none">Your message has been sent.  Thank you.</h3>
+      <br/> <br/>
       <form class='form-horizontal col-sm-12 container' id="contactForm" action="https://formsubmit.io/send/87d09a81-6fe7-4702-9a3a-f2799aa8cd10" novalidate>
         <input name="_redirect" type="hidden" value="localhost:8080">
         <div class='form-group'>
-          <label>Name</label>
+          <label class="h2">Name</label>
           <input class='form-control needs-validation' id="name" placeholder='Enter your name' type='text' name="name" required>
           <div class="invalid-feedback">Please enter your name.</div>
         </div>
         <div class='form-group'>
-          <label>E-Mail</label>
+          <label class="h2">E-Mail</label>
           <input class='form-control needs-validation' id="email" placeholder='Enter your email address' type='email' name="email" required>
           <div class="invalid-feedback">Please enter a valid email address.</div>
         </div>
         <div class='form-group'>
-          <label>Message</label>
+          <label class="h2">Message</label>
           <textarea id='message' class='form-control needs-validation' placeholder='Enter your message' name='comment' required></textarea>
           <div class="invalid-feedback">Please enter a message.</div>
         </div>

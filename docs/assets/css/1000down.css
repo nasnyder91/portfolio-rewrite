@@ -1,7 +1,11 @@
 html {
-  font-size: .6rem !important;
+  font-size: .5rem !important;
 }
 
 .jumbotron {
   height: 200px !important;
+}
+
+#buttons h2 {
+  font-size: 2rem !important;
 }
