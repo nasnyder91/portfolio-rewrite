@@ -66,3 +66,7 @@ object {
   object-fit: contain;
   height: 75vh !important;
 }
+
+embed {
+  top: 10px;
+}
