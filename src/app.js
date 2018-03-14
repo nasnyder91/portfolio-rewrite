@@ -73,9 +73,3 @@ function checkFormValidityAndSubmit(e){
     }
   }
 }
-
-$('.modal').on('hidden.bs.modal', function(e)
-{
-  console.log(123);
-    $(this).removeData();
-}) ;
