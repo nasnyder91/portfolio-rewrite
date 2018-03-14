@@ -61,11 +61,6 @@ body,html{
   padding: 5px 8px 5px 8px;
 }
 
-object {
-  width: 100%;
-  height: auto;
-}
-
 .modal {
   overflow-y: auto !important;
 }
