@@ -64,4 +64,5 @@ body,html{
 
 object {
   object-fit: contain;
+  height: 75vh !important;
 }
