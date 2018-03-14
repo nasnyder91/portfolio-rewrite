@@ -61,7 +61,6 @@ body,html{
   padding: 5px 8px 5px 8px;
 }
 
-.modal-body {
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: auto !important;
+object {
+  -webkit-overflow-scrolling: touch !important;
 }
