@@ -63,10 +63,6 @@ body,html{
 }
 
 object {
-  object-fit: contain;
+  object-fit: cover;
   height: 75vh !important;
-}
-
-embed {
-  top: 10px;
 }
