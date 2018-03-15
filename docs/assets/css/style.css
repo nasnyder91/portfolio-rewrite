@@ -62,7 +62,11 @@ body,html{
   padding: 5px 8px 5px 8px;
 }
 
+.modal-dialog {
+  height: 90vh;
+}
+
 object {
-  object-fit: none;
+  object-fit: scale-down;
   height: 75vh !important;
 }
