@@ -63,6 +63,6 @@ body,html{
 }
 
 object {
-  object-fit: none;
+  object-fit: scale-down;
   height: 75vh !important;
 }
