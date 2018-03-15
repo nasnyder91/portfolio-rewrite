@@ -11,7 +11,6 @@ body,html{
     margin: 0px;
     padding: 0px;
     overflow-x:hidden;
-    position: fixed;
     background-color: #E4E4E4;
     font-size: 1rem;
     -webkit-overflow-scrolling: touch !important;
@@ -67,5 +66,5 @@ body,html{
 }
 
 object {
-  object-fit: scale-down;
+  object-fit: contain;
 }
