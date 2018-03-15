@@ -60,11 +60,3 @@ body,html{
   font-size: .8rem;
   padding: 5px 8px 5px 8px;
 }
-
-#resumeCollapse {
-  height: 90%;
-}
-
-object {
-  object-fit: contain;
-}
