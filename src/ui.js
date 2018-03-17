@@ -34,7 +34,7 @@ class UI {
           <div class='text-center'>
             <h1 class="display-3 text-secondary">Nick Snyder <span class="orange">|</span> <span class="blue">Developer</span></h1>
             <br><br>
-            <h2 class="text-secondary subtitle">Welcome to my portfolio.</h2>
+            <h2 class="text-secondary subtitle">Full stack web development</h2>
           </div>
           <button class="replayBtn btn btn-outline-secondary btn-sm float-right">Replay</button>
         `;
@@ -117,8 +117,28 @@ class UI {
 
     const about = document.createElement('div');
     about.innerHTML = `
-      <h1 class="display-5"><strong>About Me</strong></h1>
-      This is the about
+      <h1 class="display-5 mb-4">About Me</h1>
+      <hr>
+      <div class="row mt-5">
+        <div class="card bg-transparent border-0 col-md-4 text-center">
+          <div class="card-header bg-transparent text-primary mb-3">
+            <h2 class="card-title">Responsive</h2>
+          </div>
+          <p class="card-text text-dark">Websites that fit and look good on any device.</p>
+        </div>
+        <div class="card bg-transparent border-0 col-md-4 text-center">
+          <div class="card-header bg-transparent text-primary mb-3">
+            <h2 class="card-title">Intuitive</h2>
+          </div>
+          <p class="card-text text-dark">The information you need right where you expect it to be.</p>
+        </div>
+        <div class="card bg-transparent border-0 col-md-4 text-center">
+          <div class="card-header bg-transparent text-primary mb-3">
+            <h2 class="card-title">Clean</h2>
+          </div>
+          <p class="card-text text-dark">Using less to show more.</p>
+        </div>
+      </div>
     `;
 
     this.mainDisplay.appendChild(about);

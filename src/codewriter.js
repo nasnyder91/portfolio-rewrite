@@ -13,7 +13,7 @@ class CodeWriter {
                       '`': '&#x60;',
                       '=': '&#x3D;'
                     };
-    this.finalText = "<div class='text-center'>~*<h1 class='display-3 text-secondary'>Nick Snyder <span class='orange'>|</span> <span class='blue'>Developer</span></h1>~*<br/><br/>~*<h2 class='text-secondary subtitle'>Welcome to my portfolio</h2>~</div>~<button class='replayBtn btn btn-outline-secondary btn-sm float-right'>Replay</button>";
+    this.finalText = "<div class='text-center'>~*<h1 class='display-3 text-secondary'>Nick Snyder <span class='orange'>|</span> <span class='blue'>Developer</span></h1>~*<br/><br/>~*<h2 class='text-secondary subtitle'>Full stack web development</h2>~</div>~<button class='replayBtn btn btn-outline-secondary btn-sm float-right'>Replay</button>";
     String.prototype.replaceAll = function(search, replace)
     {
         if (replace === undefined) {

@@ -3765,7 +3765,7 @@ var UI = function () {
       }
       if (state === 'html') {
         _animations.animation.fadeOutElement(this.jumboText, 2000, function () {
-          _this.jumboText.innerHTML = '\n          <div class=\'text-center\'>\n            <h1 class="display-3 text-secondary">Nick Snyder <span class="orange">|</span> <span class="blue">Developer</span></h1>\n            <br><br>\n            <h2 class="text-secondary subtitle">Welcome to my portfolio.</h2>\n          </div>\n          <button class="replayBtn btn btn-outline-secondary btn-sm float-right">Replay</button>\n        ';
+          _this.jumboText.innerHTML = '\n          <div class=\'text-center\'>\n            <h1 class="display-3 text-secondary">Nick Snyder <span class="orange">|</span> <span class="blue">Developer</span></h1>\n            <br><br>\n            <h2 class="text-secondary subtitle">Full stack web development</h2>\n          </div>\n          <button class="replayBtn btn btn-outline-secondary btn-sm float-right">Replay</button>\n        ';
           _this.jumboText.classList.remove('fadeout');
           _animations.animation.slideInDown(_this.jumboText, 1500);
         });
@@ -3852,7 +3852,7 @@ var UI = function () {
       this.mainDisplayState = 'about';
 
       var about = document.createElement('div');
-      about.innerHTML = '\n      <h1 class="display-5"><strong>About Me</strong></h1>\n      This is the about\n    ';
+      about.innerHTML = '\n      <h1 class="display-5 mb-4">About Me</h1>\n      <hr>\n      <div class="row mt-5">\n        <div class="card bg-transparent border-0 col-md-4 text-center">\n          <div class="card-header bg-transparent text-primary mb-3">\n            <h2 class="card-title">Responsive</h2>\n          </div>\n          <p class="card-text text-dark">Websites that fit and look good on any device.</p>\n        </div>\n        <div class="card bg-transparent border-0 col-md-4 text-center">\n          <div class="card-header bg-transparent text-primary mb-3">\n            <h2 class="card-title">Intuitive</h2>\n          </div>\n          <p class="card-text text-dark">The information you need right where you expect it to be.</p>\n        </div>\n        <div class="card bg-transparent border-0 col-md-4 text-center">\n          <div class="card-header bg-transparent text-primary mb-3">\n            <h2 class="card-title">Clean</h2>\n          </div>\n          <p class="card-text text-dark">Using less to show more.</p>\n        </div>\n      </div>\n    ';
 
       this.mainDisplay.appendChild(about);
 
@@ -9317,11 +9317,6 @@ function checkFormValidityAndSubmit(e) {
   }
 }
 
-$('.modal').on('hidden.bs.modal', function (e) {
-  console.log(123);
-  $(this).removeData();
-});
-
 /***/ }),
 /* 330 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -9524,7 +9519,7 @@ var CodeWriter = function () {
       '`': '&#x60;',
       '=': '&#x3D;'
     };
-    this.finalText = "<div class='text-center'>~*<h1 class='display-3 text-secondary'>Nick Snyder <span class='orange'>|</span> <span class='blue'>Developer</span></h1>~*<br/><br/>~*<h2 class='text-secondary subtitle'>Welcome to my portfolio</h2>~</div>~<button class='replayBtn btn btn-outline-secondary btn-sm float-right'>Replay</button>";
+    this.finalText = "<div class='text-center'>~*<h1 class='display-3 text-secondary'>Nick Snyder <span class='orange'>|</span> <span class='blue'>Developer</span></h1>~*<br/><br/>~*<h2 class='text-secondary subtitle'>Full stack web development</h2>~</div>~<button class='replayBtn btn btn-outline-secondary btn-sm float-right'>Replay</button>";
     String.prototype.replaceAll = function (search, replace) {
       if (replace === undefined) {
         return this.toString();
