@@ -32,7 +32,7 @@ function replayJumbo(e){
 
 // Projects button pressed
 function displayProjects(e){
-  if(document.querySelector('#projectsBtn').querySelector('h2').textContent === 'About Me'){
+  if(document.querySelector('#projectsBtn').querySelector('h2').textContent === 'About'){
     ui.changeMainDisplayState('about');
   } else{
     if(sessionStorage.getItem('repos')){
@@ -50,7 +50,7 @@ function displayProjects(e){
 
 // Contact Form button pressed
 function displayContactForm(){
-  if(document.querySelector('#contactBtn').querySelector('h2').textContent === 'About Me'){
+  if(document.querySelector('#contactBtn').querySelector('h2').textContent === 'About'){
     ui.changeMainDisplayState('about');
   } else{
     ui.changeMainDisplayState('contact');

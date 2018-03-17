@@ -56,7 +56,7 @@ class UI {
           if(state === 'contact'){
             this.projectsBtnText.textContent = 'Projects';
             this.projectsBtnIcon.className = 'fa fa-briefcase';
-            this.contactBtnText.textContent = 'About Me';
+            this.contactBtnText.textContent = 'About';
             this.contactBtnIcon.className = 'fa fa-address-card';
             this.toggleContactForm();
           }
@@ -74,7 +74,7 @@ class UI {
 
           // Display state
           if(state === 'projects'){
-            this.projectsBtnText.textContent = 'About Me';
+            this.projectsBtnText.textContent = 'About';
             this.projectsBtnIcon.className = 'fa fa-address-card';
             this.contactBtnText.textContent = 'Contact';
             this.contactBtnIcon.className = 'fa fa-envelope';
@@ -94,12 +94,12 @@ class UI {
 
           // Display state
           if(state === 'projects'){
-            this.projectsBtnText.textContent = 'About Me';
+            this.projectsBtnText.textContent = 'About';
             this.projectsBtnIcon.className = 'fa fa-address-card';
             this.toggleProjects(data);
           }
           if(state === 'contact'){
-            this.contactBtnText.textContent = 'About Me';
+            this.contactBtnText.textContent = 'About';
             this.contactBtnIcon.className = 'fa fa-address-card';
             this.toggleContactForm();
           }
@@ -116,9 +116,8 @@ class UI {
     this.mainDisplayState = 'about';
 
     const about = document.createElement('div');
+    about.className = 'container-fluid about px-5'
     about.innerHTML = `
-      <h1 class="display-5 mb-4">About Me</h1>
-      <hr>
       <div class="row mt-5">
         <div class="card bg-transparent border-0 mb-5 col-md-4 text-center">
           <div class="card-header bg-transparent text-primary mb-3">
@@ -134,7 +133,7 @@ class UI {
         </div>
         <div class="card bg-transparent border-0 mb-5 col-md-4 text-center">
           <div class="card-header bg-transparent text-primary mb-3">
-            <h2 class="card-title">Clean</h2>
+            <h2 class="card-title">Smart</h2>
           </div>
           <p class="card-text text-dark">Using less to show more.</p>
         </div>
@@ -152,7 +151,7 @@ class UI {
     this.mainDisplayState = 'projects';
     // Create projects grid
     const projectsGrid = document.createElement('div');
-    projectsGrid.className = 'row';
+    projectsGrid.className = 'row container mx-auto';
     projectsGrid.id = 'projectsGrid';
 
     projectsGrid.innerHTML = `
@@ -196,6 +195,7 @@ class UI {
     this.mainDisplayState = 'contact';
     // Create contact form
     const contact = document.createElement('div');
+    contact.className = 'container'
     contact.innerHTML = `
       <h1 class="display-5"><strong>Contact Me</strong></h1>
       <h3 class="orange" id="formThankYou" style="display:none">Your message has been sent.  Thank you.</h3>

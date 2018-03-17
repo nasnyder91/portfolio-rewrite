@@ -60,3 +60,15 @@ body,html{
   font-size: .8rem;
   padding: 5px 8px 5px 8px;
 }
+
+footer a:hover{
+  text-decoration: none;
+}
+
+footer a {
+  font-size: 1.5rem;
+}
+
+.about h2 {
+  font-weight: 1000 !important;
+}

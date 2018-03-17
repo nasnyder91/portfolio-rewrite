@@ -3789,7 +3789,7 @@ var UI = function () {
             if (state === 'contact') {
               _this2.projectsBtnText.textContent = 'Projects';
               _this2.projectsBtnIcon.className = 'fa fa-briefcase';
-              _this2.contactBtnText.textContent = 'About Me';
+              _this2.contactBtnText.textContent = 'About';
               _this2.contactBtnIcon.className = 'fa fa-address-card';
               _this2.toggleContactForm();
             }
@@ -3807,7 +3807,7 @@ var UI = function () {
 
             // Display state
             if (state === 'projects') {
-              _this2.projectsBtnText.textContent = 'About Me';
+              _this2.projectsBtnText.textContent = 'About';
               _this2.projectsBtnIcon.className = 'fa fa-address-card';
               _this2.contactBtnText.textContent = 'Contact';
               _this2.contactBtnIcon.className = 'fa fa-envelope';
@@ -3827,12 +3827,12 @@ var UI = function () {
 
             // Display state
             if (state === 'projects') {
-              _this2.projectsBtnText.textContent = 'About Me';
+              _this2.projectsBtnText.textContent = 'About';
               _this2.projectsBtnIcon.className = 'fa fa-address-card';
               _this2.toggleProjects(data);
             }
             if (state === 'contact') {
-              _this2.contactBtnText.textContent = 'About Me';
+              _this2.contactBtnText.textContent = 'About';
               _this2.contactBtnIcon.className = 'fa fa-address-card';
               _this2.toggleContactForm();
             }
@@ -3852,7 +3852,8 @@ var UI = function () {
       this.mainDisplayState = 'about';
 
       var about = document.createElement('div');
-      about.innerHTML = '\n      <h1 class="display-5 mb-4">About Me</h1>\n      <hr>\n      <div class="row mt-5">\n        <div class="card bg-transparent border-0 mb-5 col-md-4 text-center">\n          <div class="card-header bg-transparent text-primary mb-3">\n            <h2 class="card-title">Responsive</h2>\n          </div>\n          <p class="card-text text-dark">Websites that fit and look good on any device.</p>\n        </div>\n        <div class="card bg-transparent border-0 mb-5 col-md-4 text-center">\n          <div class="card-header bg-transparent text-primary mb-3">\n            <h2 class="card-title">Intuitive</h2>\n          </div>\n          <p class="card-text text-dark">The information you need right where you expect it to be.</p>\n        </div>\n        <div class="card bg-transparent border-0 mb-5 col-md-4 text-center">\n          <div class="card-header bg-transparent text-primary mb-3">\n            <h2 class="card-title">Clean</h2>\n          </div>\n          <p class="card-text text-dark">Using less to show more.</p>\n        </div>\n      </div>\n    ';
+      about.className = 'container-fluid about px-5';
+      about.innerHTML = '\n      <div class="row mt-5">\n        <div class="card bg-transparent border-0 mb-5 col-md-4 text-center">\n          <div class="card-header bg-transparent text-primary mb-3">\n            <h2 class="card-title">Responsive</h2>\n          </div>\n          <p class="card-text text-dark">Websites that fit and look good on any device.</p>\n        </div>\n        <div class="card bg-transparent border-0 mb-5 col-md-4 text-center">\n          <div class="card-header bg-transparent text-primary mb-3">\n            <h2 class="card-title">Intuitive</h2>\n          </div>\n          <p class="card-text text-dark">The information you need right where you expect it to be.</p>\n        </div>\n        <div class="card bg-transparent border-0 mb-5 col-md-4 text-center">\n          <div class="card-header bg-transparent text-primary mb-3">\n            <h2 class="card-title">Smart</h2>\n          </div>\n          <p class="card-text text-dark">Using less to show more.</p>\n        </div>\n      </div>\n    ';
 
       this.mainDisplay.appendChild(about);
 
@@ -3868,7 +3869,7 @@ var UI = function () {
       this.mainDisplayState = 'projects';
       // Create projects grid
       var projectsGrid = document.createElement('div');
-      projectsGrid.className = 'row';
+      projectsGrid.className = 'row container mx-auto';
       projectsGrid.id = 'projectsGrid';
 
       projectsGrid.innerHTML = '\n      <div class="indentRight">\n        <h1 class="display-5"><strong>Projects</strong></h1>\n        <p class="text-muted">Powered by the GitHub API</p>\n      </div>\n    ';
@@ -3899,6 +3900,7 @@ var UI = function () {
       this.mainDisplayState = 'contact';
       // Create contact form
       var contact = document.createElement('div');
+      contact.className = 'container';
       contact.innerHTML = '\n      <h1 class="display-5"><strong>Contact Me</strong></h1>\n      <h3 class="orange" id="formThankYou" style="display:none">Your message has been sent.  Thank you.</h3>\n      <br/> <br/>\n      <form class=\'form-horizontal col-sm-12 container\' id="contactForm" action="https://formsubmit.io/send/87d09a81-6fe7-4702-9a3a-f2799aa8cd10" novalidate>\n        <input name="_redirect" type="hidden" value="localhost:8080">\n        <div class=\'form-group\'>\n          <label class="h2">Name</label>\n          <input class=\'form-control needs-validation\' id="name" placeholder=\'Enter your name\' type=\'text\' name="name" required>\n          <div class="invalid-feedback">Please enter your name.</div>\n        </div>\n        <div class=\'form-group\'>\n          <label class="h2">E-Mail</label>\n          <input class=\'form-control needs-validation\' id="email" placeholder=\'Enter your email address\' type=\'email\' name="email" required>\n          <div class="invalid-feedback">Please enter a valid email address.</div>\n        </div>\n        <div class=\'form-group\'>\n          <label class="h2">Message</label>\n          <textarea id=\'message\' class=\'form-control needs-validation\' placeholder=\'Enter your message\' name=\'comment\' required></textarea>\n          <div class="invalid-feedback">Please enter a message.</div>\n        </div>\n        <input name="_formsubmit_id" type="text" style="display:none">\n        <input type=\'submit\' value="Send" class=\'btn btn-success btn-block\'>\n      </form>\n    ';
 
       // Append contact form to main display
@@ -9274,7 +9276,7 @@ function replayJumbo(e) {
 
 // Projects button pressed
 function displayProjects(e) {
-  if (document.querySelector('#projectsBtn').querySelector('h2').textContent === 'About Me') {
+  if (document.querySelector('#projectsBtn').querySelector('h2').textContent === 'About') {
     _ui.ui.changeMainDisplayState('about');
   } else {
     if (sessionStorage.getItem('repos')) {
@@ -9292,7 +9294,7 @@ function displayProjects(e) {
 
 // Contact Form button pressed
 function displayContactForm() {
-  if (document.querySelector('#contactBtn').querySelector('h2').textContent === 'About Me') {
+  if (document.querySelector('#contactBtn').querySelector('h2').textContent === 'About') {
     _ui.ui.changeMainDisplayState('about');
   } else {
     _ui.ui.changeMainDisplayState('contact');
