@@ -120,19 +120,19 @@ class UI {
       <h1 class="display-5 mb-4">About Me</h1>
       <hr>
       <div class="row mt-5">
-        <div class="card bg-transparent border-0 col-md-4 text-center">
+        <div class="card bg-transparent border-0 mb-5 col-md-4 text-center">
           <div class="card-header bg-transparent text-primary mb-3">
             <h2 class="card-title">Responsive</h2>
           </div>
           <p class="card-text text-dark">Websites that fit and look good on any device.</p>
         </div>
-        <div class="card bg-transparent border-0 col-md-4 text-center">
+        <div class="card bg-transparent border-0 mb-5 col-md-4 text-center">
           <div class="card-header bg-transparent text-primary mb-3">
             <h2 class="card-title">Intuitive</h2>
           </div>
           <p class="card-text text-dark">The information you need right where you expect it to be.</p>
         </div>
-        <div class="card bg-transparent border-0 col-md-4 text-center">
+        <div class="card bg-transparent border-0 mb-5 col-md-4 text-center">
           <div class="card-header bg-transparent text-primary mb-3">
             <h2 class="card-title">Clean</h2>
           </div>
