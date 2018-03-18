@@ -1,3 +1,5 @@
+import { styles } from '../assets/css/style.css';
+import { resume } from '../assets/resume/resume.pdf';
 import { ui } from './ui';
 import { codeWriter } from './codewriter';
 import { github } from './github';

@@ -1,22 +1,28 @@
 {
-  "name": "babel_webpack_starter",
+  "name": "webpackstarter",
   "version": "1.0.0",
-  "description": "Starter pack for compiling ES6+ apps to ES5",
+  "description": "Simple webpack starter kit utilizing css-loader, html-loader, and babel-loader.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "start": "webpack-dev-server --output-public-path=/build/"
+    "dev": "webpack --output ./dev/app.bundle.js --mode development",
+    "build": "webpack --output ./docs/app.bundle.js --mode production",
+    "start": "webpack-dev-server --mode development --open"
   },
-  "author": "Brad Traversy",
+  "author": "Nick Snyder",
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
+    "babel-loader": "^7.1.4",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-0": "^6.24.1",
-    "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.4"
+    "css-loader": "^0.28.11",
+    "file-loader": "^1.1.11",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.0.6",
+    "mini-css-extract-plugin": "^0.2.0",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.12",
+    "webpack-dev-server": "^3.1.1"
   }
 }
