@@ -201,7 +201,7 @@ class UI {
       <h3 class="orange" id="formThankYou" style="display:none">Your message has been sent.  Thank you.</h3>
       <br/> <br/>
       <form class='form-horizontal col-sm-12 container' id="contactForm" action="https://formsubmit.io/send/87d09a81-6fe7-4702-9a3a-f2799aa8cd10" method="POST" novalidate>
-        <input name="_redirect" type="hidden" value="localhost:8080">
+        <input name="_redirect" type="hidden" value="www.snyderdeveloper.com">
         <div class='form-group'>
           <label class="h2">Name</label>
           <input class='form-control needs-validation' id="name" placeholder='Enter your name' type='text' name="name" required>
