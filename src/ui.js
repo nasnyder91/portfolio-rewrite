@@ -200,7 +200,7 @@ class UI {
       <h1 class="display-5"><strong>Contact Me</strong></h1>
       <h3 class="orange" id="formThankYou" style="display:none">Your message has been sent.  Thank you.</h3>
       <br/> <br/>
-      <form class='form-horizontal col-sm-12 container' id="contactForm" action="https://formsubmit.io/send/87d09a81-6fe7-4702-9a3a-f2799aa8cd10" novalidate>
+      <form class='form-horizontal col-sm-12 container' id="contactForm" action="https://formsubmit.io/send/87d09a81-6fe7-4702-9a3a-f2799aa8cd10" method="POST" novalidate>
         <input name="_redirect" type="hidden" value="localhost:8080">
         <div class='form-group'>
           <label class="h2">Name</label>
