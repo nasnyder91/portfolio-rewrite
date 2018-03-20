@@ -30,9 +30,9 @@ class FormSubmit {
     $.ajax({
       url: "https://www.enformed.io/38zlufb0",
       method: "post",
-      dataType: "json",
+      dataType: "jsonp",
       accepts: "application/json",
-      data: $("#contactForm").serialize(),
+      data: $(form).serialize(),
       success: function(){
         console.log("Your form was successfully received!");
         formSubmit.clearForm(form);
@@ -40,6 +40,8 @@ class FormSubmit {
       },
       error: function(){
         console.log("Failure. Try again.");
+        formSubmit.clearForm(form);
+        formSubmit.showMessage();
         // Show an error message here...
       }
     });
