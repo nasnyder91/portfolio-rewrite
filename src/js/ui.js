@@ -200,7 +200,8 @@ class UI {
       <h1 class="display-5"><strong>Contact Me</strong></h1>
       <h3 class="orange" id="formThankYou" style="display:none">Your message has been sent.  Thank you.</h3>
       <br/> <br/>
-      <form class='form-horizontal col-sm-12 container' id="contactForm" action="https://formspree.io/snyderdeveloper@gmail.com" method="POST" novalidate>
+      <form class='form-horizontal col-sm-12 container' id="contactForm" action="https://formsubmit.io/send/87d09a81-6fe7-4702-9a3a-f2799aa8cd10" method="POST" novalidate>
+        <input name="_redirect" type="hidden" value="https://www.snyderdeveloper.com">
         <div class='form-group'>
           <label class="h2">Name</label>
           <input class='form-control needs-validation' id="name" placeholder='Enter your name' type='text' name="name" required>
@@ -208,7 +209,7 @@ class UI {
         </div>
         <div class='form-group'>
           <label class="h2">E-Mail</label>
-          <input class='form-control needs-validation' id="email" placeholder='Enter your email address' type='email' name="_replyto" required>
+          <input class='form-control needs-validation' id="email" placeholder='Enter your email address' type='email' name="email" required>
           <div class="invalid-feedback">Please enter a valid email address.</div>
         </div>
         <div class='form-group'>
@@ -216,7 +217,7 @@ class UI {
           <textarea id='message' class='form-control needs-validation' placeholder='Enter your message' name='comment' required></textarea>
           <div class="invalid-feedback">Please enter a message.</div>
         </div>
-        <input type="hidden" name="_next" value="https://www.snyderdeveloper.com">
+        <input name="_formsubmit_id" type="text" style="display:none">
         <input type='submit' value="Send" class='btn btn-success btn-block'>
       </form>
     `;

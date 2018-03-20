@@ -62,6 +62,7 @@ function displayContactForm(){
 
 // Check form validity on input blur
 function checkFormValidityAndSubmit(e){
+  e.preventDefault();
   if(e.target.classList.contains('needs-validation')){
     e.target.addEventListener('blur', () => formSubmit.checkInputValidity(e.target));
   }
@@ -70,8 +71,9 @@ function checkFormValidityAndSubmit(e){
     if(!e.target.parentElement.checkValidity()){
       formSubmit.showFormInvalid(e.target.parentElement);
     } else{
-      formSubmit.clearForm(e.target.parentElement);
-      formSubmit.showMessage();
+      formSubmit.submitForm(e.target.parentElement)
+      // formSubmit.clearForm(e.target.parentElement);
+      // formSubmit.showMessage();
     }
   }
 }

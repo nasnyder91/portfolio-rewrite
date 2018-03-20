@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 class FormSubmit {
   checkInputValidity(input){
     if(!input.checkValidity()){
@@ -21,6 +23,26 @@ class FormSubmit {
         }
       }
     }
+  }
+
+  // Submit the form
+  submitForm(form){
+    $.ajax({
+      url: "https://www.enformed.io/38zlufb0",
+      method: "post",
+      dataType: "json",
+      accepts: "application/json",
+      data: $("#contactForm").serialize(),
+      success: function(){
+        console.log("Your form was successfully received!");
+        formSubmit.clearForm(form);
+        formSubmit.showMessage();
+      },
+      error: function(){
+        console.log("Failure. Try again.");
+        // Show an error message here...
+      }
+    });
   }
 
   // Clear the form inputs
