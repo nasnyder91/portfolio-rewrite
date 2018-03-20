@@ -29,11 +29,7 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
-            options: {
-              modules: true,
-              localIdentName: '[local]',
-              minimize: true
-            }
+            options: { minimize: true }
           }
         ]
       },
