@@ -27,24 +27,27 @@ class FormSubmit {
 
   // Submit the form
   submitForm(form){
-    $.ajax({
-      url: "https://www.enformed.io/38zlufb0",
-      method: "post",
-      dataType: "jsonp",
-      accepts: "application/json",
-      data: $(form).serialize(),
-      success: function(){
-        console.log("Your form was successfully received!");
-        formSubmit.clearForm(form);
-        formSubmit.showMessage();
+    const formData = {
+      name: form.querySelector('#name').value,
+      email: form.querySelector('#email').value,
+      message: form.querySelector('#message').value
+    }
+
+    fetch('https://www.enformed.io/38zlufb0/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
       },
-      error: function(){
-        console.log("Failure. Try again.");
+      body: JSON.stringify(formData)
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
         formSubmit.clearForm(form);
         formSubmit.showMessage();
-        // Show an error message here...
-      }
-    });
+      })
+      .catch(error => console.log(err));
   }
 
   // Clear the form inputs
