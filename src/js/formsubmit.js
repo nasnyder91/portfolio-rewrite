@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 class FormSubmit {
   checkInputValidity(input){
     if(!input.checkValidity()){
@@ -47,7 +45,7 @@ class FormSubmit {
         formSubmit.clearForm(form);
         formSubmit.showMessage();
       })
-      .catch(error => console.log(err));
+      .catch(err => console.log(err));
   }
 
   // Clear the form inputs
