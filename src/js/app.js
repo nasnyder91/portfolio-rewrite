@@ -62,8 +62,8 @@ function displayContactForm(){
 
 // Check form validity on input blur
 function checkFormValidityAndSubmit(e){
-  e.preventDefault();
   if(e.target.classList.contains('needs-validation')){
+    e.preventDefault();
     e.target.addEventListener('blur', () => formSubmit.checkInputValidity(e.target));
   }
   if(e.target.type === 'submit'){
