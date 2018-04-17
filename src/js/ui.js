@@ -163,6 +163,7 @@ class UI {
 
     // Loop through projects and make project cards
     projects.forEach((project) => {
+      console.log(project);
       // Create project card
       const card = document.createElement('div');
       card.className = 'card hoverHL col-md-12 pt-4 pb-4 my-2';
@@ -174,7 +175,7 @@ class UI {
           </div>
           <div class="col-xl-4 col-lg-12 d-flex align-items-start justify-content-end gitLinks">
             <a href="${project.html_url}" target="_blank" class="btn btn-dark mr-3">GitHub Repository</a>
-            ${project.has_pages ? `<a href="https://nasnyder91.github.io/${project.name}" target="_blank" class="btn btn-primary">Webpage</a>` : '<a href="#" class="btn btn-primary float-right disabled">Webpage</a>'}
+            ${project.has_pages ? `<a href="https://nasnyder91.github.io/${project.name}" target="_blank" class="btn btn-primary">Webpage</a>` : (project.homepage ? `<a href="${project.homepage}" target="_blank" class="btn btn-primary">Webpage</a>` : '<a href="#" class="btn btn-primary float-right disabled">Webpage</a>')}
           </div>
         </div>
       `;
