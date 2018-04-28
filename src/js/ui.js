@@ -138,47 +138,45 @@ class UI {
     const aboutHeader = document.createElement('div');
     aboutHeader.className = 'container-fluid text-center mb-5';
     aboutHeader.innerHTML = `
-      <h3>Building smart, intuitive, and responsive websites using the latest and best technologies.</h3>
+      <h3 class="aboutHeader">Building <span class="orange">smart</span>, <span class="orange">intuitive</span>, and <span class="orange">responsive</span> websites using the latest and best technologies.</h3>
     `;
 
     this.mainDisplay.appendChild(aboutHeader);
 
     const about = document.createElement('div');
-    about.className = 'container-fluid about px-5'
+    about.className = 'container-fluid about px-5';
     about.innerHTML = `
-      <div class="card border-dark px-5">
+      <div class="px-5">
         <div class="row">
           <div class="col-12 my-5">
             <div class="row">
-              <div class="col-md-2">
-                <h3>Languages</h3>
+              <div class="col-lg-2 mb-2">
+                <h3 class="shadowedText">Languages</h3>
               </div>
-              <div class="col-md-10">
-                <div class="">
-                  <div class="row text-center">
-                    <div class="col-md-2 card bg-body border-0 mx-2 py-2">
-                      <img class="card-img-top" src=${htmlLogo} alt="HTML5 logo" />
-                      <div class="card-body">
-                        <h4>HTML5</h4>
-                      </div>
+              <div class="col-lg-10 offset-md-2 offset-lg-0">
+                <div class="row text-center">
+                  <div class="col-md-4 col-lg-2 card bg-secondary border-0 mb-5 mx-4 pt-4">
+                    <img class="card-img-top" src=${htmlLogo} alt="HTML5 logo" />
+                    <div class="card-body">
+                      <p class="text-uppercase">HTML5</p>
                     </div>
-                    <div class="col-md-2 card bg-body border-0 mx-2 py-2">
-                      <img class="img-fluid" src=${cssLogo} alt="CSS3 logo" />
-                      <div class="card-body">
-                        <h4>CSS3</h4>
-                      </div>
+                  </div>
+                  <div class="col-md-4 col-lg-2 card bg-secondary border-0 mb-5 mx-4 pt-4">
+                    <img class="img-fluid" src=${cssLogo} alt="CSS3 logo" />
+                    <div class="card-body">
+                      <p class="text-uppercase">CSS3</p>
                     </div>
-                    <div class="col-md-2 card bg-body border-0 mx-2 py-2">
-                      <img class="img-fluid" src=${jsLogo} alt="Javascript logo" />
-                      <div class="card-body">
-                        <h4>Javascript</h4>
-                      </div>
+                  </div>
+                  <div class="col-md-4 col-lg-2 card bg-secondary border-0 mb-5 mx-4 pt-4">
+                    <img class="img-fluid" src=${jsLogo} alt="Javascript logo" />
+                    <div class="card-body">
+                      <p class="text-uppercase">Javascript</p>
                     </div>
-                    <div class="col-md-2 card bg-body border-0 mx-2 py-2">
-                      <img class="img-fluid" src=${tsLogo} alt="TypeScript logo" />
-                      <div class="card-body">
-                        <h4>TypeScript</h4>
-                      </div>
+                  </div>
+                  <div class="col-md-4 col-lg-2 card bg-secondary border-0 mb-5 mx-4 pt-4">
+                    <img class="img-fluid" src=${tsLogo} alt="TypeScript logo" />
+                    <div class="card-body">
+                      <p class="text-uppercase">TypeScript</p>
                     </div>
                   </div>
                 </div>
@@ -187,33 +185,33 @@ class UI {
           </div>
           <div class="col-12 my-5">
             <div class="row">
-              <div class="col-md-2">
-                <h3>Frameworks and Libraries</h3>
+              <div class="col-lg-2 mb-2">
+                <h3 class="shadowedText">Frameworks & Libraries</h3>
               </div>
-              <div class="col-md-10">
+              <div class="col-lg-10 offset-md-2 offset-lg-0">
                 <div class="row text-center">
-                  <div class="col-md-2 card bg-body border-0 mx-2 py-2">
+                  <div class="col-md-4 col-lg-2 card bg-secondary border-0 mb-5 mx-4 pt-4">
                     <img class="img-fluid mx-auto" src=${angularLogo} alt="Angular logo" />
                     <div class="card-body">
-                      <h4>Angular 2.0</h4>
+                      <p class="text-uppercase">Angular 2.0</p>
                     </div>
                   </div>
-                  <div class="col-md-2 card bg-body border-0 mx-2 py-2">
+                  <div class="col-md-4 col-lg-2 card bg-secondary border-0 mb-5 mx-4 pt-4">
                     <img class="img-fluid align-items-center" src=${jqueryLogo} alt="Jquery logo" />
                     <div class="card-body">
-                      <h4>jQuery</h4>
+                      <p class="text-uppercase">jQuery</p>
                     </div>
                   </div>
-                  <div class="col-md-2 card bg-body border-0 mx-2 py-2">
+                  <div class="col-md-4 col-lg-2 card bg-secondary border-0 mb-5 mx-4 pt-4">
                     <img class="img-fluid mx-auto" src=${bootstrapLogo} alt="Bootstrap logo" />
                     <div class="card-body">
-                      <h4>Bootstrap</h4>
+                      <p class="text-uppercase">Bootstrap</p>
                     </div>
                   </div>
-                  <div class="col-md-2 card bg-body border-0 mx-2 py-2">
+                  <div class="col-md-4 col-lg-2 card bg-secondary border-0 mb-5 mx-4 pt-4">
                     <img class="img-fluid align-items-center" src=${materializeLogo} alt="Materialize logo" />
                     <div class="card-body">
-                      <h4>Materialize</h4>
+                      <p class="text-uppercase">Materialize</p>
                     </div>
                   </div>
                 </div>
@@ -222,27 +220,27 @@ class UI {
           </div>
           <div class="col-12 my-5">
             <div class="row">
-              <div class="col-md-2">
-                <h3>Tools</h3>
+              <div class="col-lg-2 mb-2">
+                <h3 class="shadowedText">Tools</h3>
               </div>
-              <div class="col-md-10">
+              <div class="col-lg-10 offset-md-2 offset-lg-0">
                 <div class="row text-center">
-                  <div class="col-md-2 card bg-body border-0 mx-2 py-2">
+                  <div class="col-md-4 col-lg-2 card bg-secondary border-0 mb-5 mx-4 pt-4">
                     <img class="img-fluid mx-auto" src=${wbLogo} alt="Webpack logo" />
                     <div class="card-body">
-                      <h4>Webpack</h4>
+                      <p class="text-uppercase">Webpack</p>
                     </div>
                   </div>
-                  <div class="col-md-2 card bg-body border-0 mx-2 py-2">
-                    <img class="img-fluid" src=${npmLogo} alt="NPM logo" />
+                  <div class="col-md-4 col-lg-2 card bg-secondary border-0 mb-5 mx-4 pt-4">
+                    <img class="img-fluid mx-auto" src=${npmLogo} alt="NPM logo" />
                     <div class="card-body">
-                      <h4>NPM</h4>
+                      <p class="text-uppercase">NPM</p>
                     </div>
                   </div>
-                  <div class="col-md-2 card bg-body border-0 mx-2 py-2">
+                  <div class="col-md-4 col-lg-2 card bg-secondary border-0 mb-5 mx-4 pt-4">
                     <img class="img-fluid mx-auto" src=${nodejsLogo} alt="NodeJS logo" />
                     <div class="card-body">
-                      <h4>Node.js</h4>
+                      <p class="text-uppercase">Node.js</p>
                     </div>
                   </div>
                 </div>
@@ -251,27 +249,27 @@ class UI {
           </div>
           <div class="col-12 my-5">
             <div class="row">
-              <div class="col-md-2">
-                <h3>Database</h3>
+              <div class="col-lg-2 mb-2">
+                <h3 class="shadowedText">Database</h3>
               </div>
-              <div class="col-md-10">
+              <div class="col-lg-10 offset-md-2 offset-lg-0">
                 <div class="row text-center">
-                  <div class="col-md-2 card bg-body border-0 mx-2 py-2">
+                  <div class="col-md-4 col-lg-2 card bg-secondary border-0 mb-5 mx-4 pt-4">
                     <img class="img-fluid align-items-center" src=${mdbLogo} alt="MongoDB logo" />
                     <div class="card-body">
-                      <h4>mongoDB</h4>
+                      <p class="text-uppercase">mongoDB</p>
                     </div>
                   </div>
-                  <div class="col-md-2 card bg-body border-0 mx-2 py-2">
+                  <div class="col-md-4 col-lg-2 card bg-secondary border-0 mb-5 mx-4 pt-4">
                     <img class="img-fluid align-items-center" src=${mlabLogo} alt="MLab logo" />
                     <div class="card-body">
-                      <h4>mongoLab</h4>
+                      <p class="text-uppercase">mongoLab</p>
                     </div>
                   </div>
-                  <div class="col-md-2 card bg-body border-0 mx-2 py-2">
+                  <div class="col-md-4 col-lg-2 card bg-secondary border-0 mb-5 mx-4 pt-4">
                     <img class="img-fluid align-items-center" src=${mysqlLogo} alt="MySql logo" />
                     <div class="card-body">
-                      <h4>MySQL</h4>
+                      <p class="text-uppercase">MySQL</p>
                     </div>
                   </div>
                 </div>

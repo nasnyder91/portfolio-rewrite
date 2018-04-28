@@ -9,3 +9,19 @@ html {
 #buttons h2 {
   font-size: 2rem !important;
 }
+
+.aboutHeader {
+  font-size: 2.5rem !important;
+}
+
+footer a{
+  font-size: 3rem !important;
+}
+
+.about h3{
+  font-size: 2rem;
+}
+
+.about p{
+  font-size: 2rem;
+}

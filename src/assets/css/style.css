@@ -13,11 +13,23 @@ body,html{
     overflow-x:hidden;
     background-color: #E4E4E4;
     font-size: 1rem;
-    -webkit-overflow-scrolling: touch !important;
+}
+
+.about .card{
+  box-shadow: 3px 3px 10px black;
 }
 
 .about img{
   height: 150px;
+}
+
+.about .card-body{
+  color: black;
+  padding-left: 0;
+  padding-right: 0;
+}
+.about p{
+  font-weight: 900;
 }
 
 .bg-body{
@@ -79,4 +91,8 @@ footer a {
 
 .about h2 {
   font-weight: 1000 !important;
+}
+
+.shadowedText{
+  text-shadow: 1px 1px 3px #000;
 }
