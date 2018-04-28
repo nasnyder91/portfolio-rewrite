@@ -16,6 +16,14 @@ body,html{
     -webkit-overflow-scrolling: touch !important;
 }
 
+.about img{
+  height: 150px;
+}
+
+.bg-body{
+  background-color: #e4e4e4;
+}
+
 .jumbotron {
   height: 300px;
 }

@@ -43,10 +43,17 @@ module.exports = {
         ]
       },
       {
-        test: /\.(pdf|gif|png|jpe?g|svg)$/,
+        test: /\.(pdf)$/,
         loader: 'file-loader',
         options: {
           name: 'assets/resume/[name].[ext]?[hash]'
+        }
+      },
+      {
+        test: /\.(gif|png|jpe?g|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: 'assets/img/[name].[ext]?[hash]'
         }
       }
     ]

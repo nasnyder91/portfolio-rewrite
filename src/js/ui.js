@@ -1,4 +1,24 @@
 import { animation } from './animations';
+import jsLogo from '../assets/img/js.svg';
+import htmlLogo from '../assets/img/html5.svg';
+import cssLogo from '../assets/img/css3.svg';
+import tsLogo from '../assets/img/ts.svg';
+import wbLogo from '../assets/img/webpack.svg';
+import angularLogo from '../assets/img/angular.svg';
+import jqueryLogo from '../assets/img/jquery.svg';
+import bootstrapLogo from '../assets/img/bootstrap.svg';
+import materializeLogo from '../assets/img/materialize.svg';
+import npmLogo from '../assets/img/npm.svg';
+import nodejsLogo from '../assets/img/nodejs.svg';
+import mlabLogo from '../assets/img/mongolab.svg';
+import mdbLogo from '../assets/img/mongodb.svg';
+import mysqlLogo from '../assets/img/mysql.svg';
+
+
+
+
+
+
 
 class UI {
   constructor(){
@@ -115,27 +135,149 @@ class UI {
     // Set main display state
     this.mainDisplayState = 'about';
 
+    const aboutHeader = document.createElement('div');
+    aboutHeader.className = 'container-fluid text-center mb-5';
+    aboutHeader.innerHTML = `
+      <h3>Building smart, intuitive, and responsive websites using the latest and best technologies.</h3>
+    `;
+
+    this.mainDisplay.appendChild(aboutHeader);
+
     const about = document.createElement('div');
     about.className = 'container-fluid about px-5'
     about.innerHTML = `
-      <div class="row mt-5">
-        <div class="card bg-transparent border-0 mb-5 col-md-4 text-center">
-          <div class="card-header bg-transparent text-primary mb-3">
-            <h2 class="card-title">Responsive</h2>
+      <div class="card border-dark px-5">
+        <div class="row">
+          <div class="col-12 my-5">
+            <div class="row">
+              <div class="col-md-2">
+                <h3>Languages</h3>
+              </div>
+              <div class="col-md-10">
+                <div class="">
+                  <div class="row text-center">
+                    <div class="col-md-2 card bg-body border-0 mx-2 py-2">
+                      <img class="card-img-top" src=${htmlLogo} alt="HTML5 logo" />
+                      <div class="card-body">
+                        <h4>HTML5</h4>
+                      </div>
+                    </div>
+                    <div class="col-md-2 card bg-body border-0 mx-2 py-2">
+                      <img class="img-fluid" src=${cssLogo} alt="CSS3 logo" />
+                      <div class="card-body">
+                        <h4>CSS3</h4>
+                      </div>
+                    </div>
+                    <div class="col-md-2 card bg-body border-0 mx-2 py-2">
+                      <img class="img-fluid" src=${jsLogo} alt="Javascript logo" />
+                      <div class="card-body">
+                        <h4>Javascript</h4>
+                      </div>
+                    </div>
+                    <div class="col-md-2 card bg-body border-0 mx-2 py-2">
+                      <img class="img-fluid" src=${tsLogo} alt="TypeScript logo" />
+                      <div class="card-body">
+                        <h4>TypeScript</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <p class="card-text text-dark">Websites that fit and look good on any device.</p>
-        </div>
-        <div class="card bg-transparent border-0 mb-5 col-md-4 text-center">
-          <div class="card-header bg-transparent text-primary mb-3">
-            <h2 class="card-title">Intuitive</h2>
+          <div class="col-12 my-5">
+            <div class="row">
+              <div class="col-md-2">
+                <h3>Frameworks and Libraries</h3>
+              </div>
+              <div class="col-md-10">
+                <div class="row text-center">
+                  <div class="col-md-2 card bg-body border-0 mx-2 py-2">
+                    <img class="img-fluid mx-auto" src=${angularLogo} alt="Angular logo" />
+                    <div class="card-body">
+                      <h4>Angular 2.0</h4>
+                    </div>
+                  </div>
+                  <div class="col-md-2 card bg-body border-0 mx-2 py-2">
+                    <img class="img-fluid align-items-center" src=${jqueryLogo} alt="Jquery logo" />
+                    <div class="card-body">
+                      <h4>jQuery</h4>
+                    </div>
+                  </div>
+                  <div class="col-md-2 card bg-body border-0 mx-2 py-2">
+                    <img class="img-fluid mx-auto" src=${bootstrapLogo} alt="Bootstrap logo" />
+                    <div class="card-body">
+                      <h4>Bootstrap</h4>
+                    </div>
+                  </div>
+                  <div class="col-md-2 card bg-body border-0 mx-2 py-2">
+                    <img class="img-fluid align-items-center" src=${materializeLogo} alt="Materialize logo" />
+                    <div class="card-body">
+                      <h4>Materialize</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <p class="card-text text-dark">The information you need right where you expect it to be.</p>
-        </div>
-        <div class="card bg-transparent border-0 mb-5 col-md-4 text-center">
-          <div class="card-header bg-transparent text-primary mb-3">
-            <h2 class="card-title">Smart</h2>
+          <div class="col-12 my-5">
+            <div class="row">
+              <div class="col-md-2">
+                <h3>Tools</h3>
+              </div>
+              <div class="col-md-10">
+                <div class="row text-center">
+                  <div class="col-md-2 card bg-body border-0 mx-2 py-2">
+                    <img class="img-fluid mx-auto" src=${wbLogo} alt="Webpack logo" />
+                    <div class="card-body">
+                      <h4>Webpack</h4>
+                    </div>
+                  </div>
+                  <div class="col-md-2 card bg-body border-0 mx-2 py-2">
+                    <img class="img-fluid" src=${npmLogo} alt="NPM logo" />
+                    <div class="card-body">
+                      <h4>NPM</h4>
+                    </div>
+                  </div>
+                  <div class="col-md-2 card bg-body border-0 mx-2 py-2">
+                    <img class="img-fluid mx-auto" src=${nodejsLogo} alt="NodeJS logo" />
+                    <div class="card-body">
+                      <h4>Node.js</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <p class="card-text text-dark">Using less to show more.</p>
+          <div class="col-12 my-5">
+            <div class="row">
+              <div class="col-md-2">
+                <h3>Database</h3>
+              </div>
+              <div class="col-md-10">
+                <div class="row text-center">
+                  <div class="col-md-2 card bg-body border-0 mx-2 py-2">
+                    <img class="img-fluid align-items-center" src=${mdbLogo} alt="MongoDB logo" />
+                    <div class="card-body">
+                      <h4>mongoDB</h4>
+                    </div>
+                  </div>
+                  <div class="col-md-2 card bg-body border-0 mx-2 py-2">
+                    <img class="img-fluid align-items-center" src=${mlabLogo} alt="MLab logo" />
+                    <div class="card-body">
+                      <h4>mongoLab</h4>
+                    </div>
+                  </div>
+                  <div class="col-md-2 card bg-body border-0 mx-2 py-2">
+                    <img class="img-fluid align-items-center" src=${mysqlLogo} alt="MySql logo" />
+                    <div class="card-body">
+                      <h4>MySQL</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     `;
